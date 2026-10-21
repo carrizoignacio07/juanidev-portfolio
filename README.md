@@ -1,5 +1,17 @@
 # React + Vite
 
+## Deploy to Vercel
+
+The GitHub Actions workflow builds pull requests targeting `main`. On each push
+to `main`, it builds the frontend with Vercel and deploys the production build.
+
+Add these repository secrets in **Settings > Secrets and variables > Actions**:
+
+- `VERCEL_TOKEN`: a Vercel access token.
+- `VERCEL_ORG_ID`: the Vercel team or account ID.
+- `VERCEL_PROJECT_ID`: the ID of the Vercel project configured for the `frontend`
+  directory.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
