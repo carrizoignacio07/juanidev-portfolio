@@ -1,30 +1,54 @@
-# React + Vite
+# JuaniDev Portfolio
 
-## Deploy to Vercel
+Monorepo npm con dos paquetes independientes:
 
-The GitHub Actions workflow builds pull requests targeting `main`. On each push
-to `main`, it builds the frontend with Vercel and deploys the production build.
+- `frontend`: portfolio en React y Vite.
+- `backend`: API en Node.js y Express.
 
-Add these repository secrets in **Settings > Secrets and variables > Actions**:
+## Requisitos
 
-- `VERCEL_TOKEN`: a Vercel access token.
-- `VERCEL_ORG_ID`: the Vercel team or account ID.
-- `VERCEL_PROJECT_ID`: the ID of the Vercel project configured for the `frontend`
-  directory.
+- Node.js 22 o superior.
+- npm incluido con Node.js.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instalación
 
-Currently, two official plugins are available:
+Desde la raíz del repositorio, instala todas las dependencias del monorepo:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+```
 
-## React Compiler
+Ejecuta los comandos desde la raíz para que npm use los workspaces y el lockfile compartido.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Desarrollo
 
-Note: This will impact Vite dev & build performances.
+```sh
+npm run dev           # Frontend en modo desarrollo
+npm run dev:frontend   # Frontend
+npm run dev:backend    # API
+```
 
-## Expanding the ESLint configuration
+La API carga sus variables de entorno desde `backend/.env`. Configura `SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY` allí antes de iniciar el backend.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Validación y build
+
+```sh
+npm run lint
+npm run build
+```
+
+Los comandos `lint` y `build` se ejecutan en el workspace del frontend.
+
+## Deploy a Vercel
+
+El monorepo se despliega como un único proyecto: Vercel sirve el frontend y publica `/api/projects` como función serverless.
+
+Al importar el repositorio en Vercel, configura:
+
+- **Root Directory**: raíz del repositorio (`.`).
+- **Install Command**: `npm ci`.
+- **Build Command**: `npm run build`.
+- **Output Directory**: `frontend/dist`.
+- Variables de entorno `SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY` para los entornos que uses (Production, Preview y Development).
+
+El workflow de GitHub Actions también construye los pull requests a `main` y despliega a producción en cada push a `main`. Para usarlo, configura los secretos `VERCEL_TOKEN`, `VERCEL_ORG_ID` y `VERCEL_PROJECT_ID` en **Settings > Secrets and variables > Actions**.

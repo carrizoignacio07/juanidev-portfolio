@@ -1,0 +1,22 @@
+{
+  "name": "juanidev-portfolio",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace=@juanidev/portfolio-frontend",
+    "dev:frontend": "npm run dev --workspace=@juanidev/portfolio-frontend",
+    "dev:backend": "npm run dev --workspace=@juanidev/portfolio-backend",
+    "build": "npm run build --workspace=@juanidev/portfolio-frontend",
+    "lint": "npm run lint --workspace=@juanidev/portfolio-frontend"
+  }
+}

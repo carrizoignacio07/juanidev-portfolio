@@ -8,7 +8,7 @@ export const Header = () => {
                 className="text-black hover:bg-blue-300 text-center px-4 rounded-2xl text-3xl font-mono font-medium flex flex-row justify-center items-center gap-2"
             >
                 <img
-                    src="public/favicon.ico.png"
+                    src="/favicon.ico.png"
                     alt="juani-dev"
                     className="w-min h-min rounded-full"
                 />
