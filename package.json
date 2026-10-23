@@ -13,7 +13,7 @@
     "@supabase/supabase-js": "^2.118.0"
   },
   "scripts": {
-    "dev": "npm run dev --workspace=@juanidev/portfolio-frontend",
+    "dev": "npm run dev --workspace=@juanidev/portfolio-frontend & npm run dev --workspace=@juanidev/portfolio-backend",
     "dev:frontend": "npm run dev --workspace=@juanidev/portfolio-frontend",
     "dev:backend": "npm run dev --workspace=@juanidev/portfolio-backend",
     "build": "npm run build --workspace=@juanidev/portfolio-frontend",
