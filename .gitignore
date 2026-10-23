@@ -1,3 +1,4 @@
 .vercel
+.vercelignore
 .env*
 node_modules/
