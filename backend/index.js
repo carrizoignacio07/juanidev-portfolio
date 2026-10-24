@@ -1,30 +1,16 @@
 import express from 'express';
-import { loadEnvFile } from 'node:process';
-import { createClient } from '@supabase/supabase-js';
-import { fetchProjects } from './projects.js';
+import dotenv from 'dotenv';
+import projectsRouter from './routes/projectsRoutes.js';
 
-loadEnvFile('.env');
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_PUBLISHABLE_KEY
-);
-
-app.get('/api/projects', async (req, res) => {
-    const { data, error } = await fetchProjects(supabase);
-
-    if (error) {
-        console.error('Error fetching projects:', error.message);
-        return res.status(500).json({
-            error: 'Failed to fetch projects',
-        });
-    }
-
-    res.json(data);
+app.get('/', (req, res) => {
+    res.send('Hello World!');
 });
+app.use('/projects', projectsRouter);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

@@ -20,4 +20,4 @@ export const fetchProjects = (supabase) =>
       )
     `
         )
-        .order('created_at', { ascending: false });
+        .order('id', { ascending: true });
