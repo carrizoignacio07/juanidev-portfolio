@@ -5,7 +5,9 @@ export const ProjectsProvider = ({ children }) => {
     const [projects, setProjects] = useState([]);
 
     const fetchProjects = async () => {
-        const response = await fetch('https://dummyjson.com/products');
+        const response = await fetch(
+            'https://backend-juanidev-portfolio.vercel.app/api/projects'
+        );
         const data = await response.json();
         setProjects(data.products);
     };

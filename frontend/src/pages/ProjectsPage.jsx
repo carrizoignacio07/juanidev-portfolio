@@ -1,15 +1,11 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
-import { fetchHttp } from '../helpers/fetchHttp';
+import { useContext } from 'react';
+import { ProjectsContext } from '../context/ProjectsContext.jsx';
 
 const URL = `https://backend-juanidev-portfolio.vercel.app/api/projects`;
 
 export const ProjectsPage = () => {
-    const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState([]);
-    useEffect(() => {
-        fetchHttp(URL, setLoading, setProjects);
-    }, []);
+    const { projects, loading } = useContext(ProjectsContext);
 
     return (
         <section className="p-7 grid grid-cols-3 gap-5">
