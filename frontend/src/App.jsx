@@ -10,7 +10,9 @@ export const App = () => {
             <ThemeProvider>
                 <ProjectsProvider>
                     <Header />
-                    <AppRoutes />
+                    <main className="flex flex-col justify-center items-center gap-5 min-h-[calc(100vh-10rem)]">
+                        <AppRoutes />
+                    </main>
                     <Footer />
                 </ProjectsProvider>
             </ThemeProvider>

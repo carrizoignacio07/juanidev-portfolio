@@ -7,7 +7,7 @@ import { FaGithub } from 'react-icons/fa';
 
 export const Footer = () => {
     return (
-        <footer className="w-full bg-blue-200 p-3 absolute bottom-0 left-0">
+        <footer className="p-5 bg-blue-400 w-full flex flex-col justify-end items-center gap-2">
             <div className="flex flex-row justify-center items-center gap-5">
                 <a
                     href="https://www.linkedin.com/in/ignacio-carrizo/"

@@ -11,37 +11,26 @@ export const Card = ({
     project_technologies,
 }) => {
     return (
-        <div>
+        <article className="p-5 max-w-96 bg-sky-100 flex flex-col justify-center items-center">
             <img src={image_url} alt={title} />
-            <div>
-                <h5>{title}</h5>
-                {/* <ul>
-                    {project_technologies.map((technology, index) => (
-                        <li key={technology + index} className="list-item">
-                            {technology}
-                        </li>
-                    ))}
-                </ul> */}
-                <p>{description}</p>
-                <div>
-                    <a
-                        href={demo_url}
-                        className="btn btn-primary card-link"
-                        target="_blank"
-                        rel=""
-                    >
-                        <SiNetlify /> Go to Netlify
-                    </a>
-                    <a
-                        href={urlGithub}
-                        className="btn btn-info card-link"
-                        target="_blank"
-                        rel=""
-                    >
-                        <FaGithub /> Go to Github
-                    </a>
-                </div>
-            </div>
-        </div>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <a
+                href={demo_url}
+                className="p-3 m-3 max-w-fit bg-blue-400 text-white rounded cursor-pointer hover:bg-blue-600"
+                target="_blank"
+                rel=""
+            >
+                <SiNetlify /> Go to Netlify
+            </a>
+            <a
+                href={urlGithub}
+                className="p-3 m-3 max-w-fit bg-blue-400 text-white rounded cursor-pointer hover:bg-green-500"
+                target="_blank"
+                rel=""
+            >
+                <FaGithub /> Go to Github
+            </a>
+        </article>
     );
 };
