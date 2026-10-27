@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export const NavBar = () => {
     return (
@@ -33,9 +33,13 @@ export const NavBar = () => {
             >
                 Contact
             </NavLink>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl cursor-pointer text-xl font-medium">
+            <Link
+                href="./frontend/public/favicon.ico.png"
+                download
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl cursor-pointer text-xl"
+            >
                 My Resume
-            </button>
+            </Link>
         </nav>
     );
 };

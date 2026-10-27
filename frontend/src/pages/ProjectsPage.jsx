@@ -18,7 +18,6 @@ export const ProjectsPage = () => {
                         demo_url={project.demo_url}
                         urlGithub={project.urlGithub}
                         image_url={project.image_url}
-                        project_technologies={project.technologies}
                     />
                 ))
             )}
