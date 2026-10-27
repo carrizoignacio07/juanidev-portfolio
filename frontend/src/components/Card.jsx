@@ -5,27 +5,27 @@ import { SiNetlify } from 'react-icons/si';
 export const Card = ({
     title,
     description,
-    urlNetlify,
+    demo_url,
     urlGithub,
-    img,
-    tecnologias,
+    image_url,
+    project_technologies,
 }) => {
     return (
-        <div className="card" style={{ width: '18rem' }}>
-            <img src={img} className="card-img-top" alt={title} />
-            <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <ul className="list">
-                    {tecnologias.map((tecnologia, index) => (
-                        <li key={tecnologia + index} className="list-item">
-                            {tecnologia}
+        <div>
+            <img src={image_url} alt={title} />
+            <div>
+                <h5>{title}</h5>
+                {/* <ul>
+                    {project_technologies.map((technology, index) => (
+                        <li key={technology + index} className="list-item">
+                            {technology}
                         </li>
                     ))}
-                </ul>
-                <p className="card-text card-body ">{description}</p>
-                <div className="d-flex flex-row justify-content-between align-items-flex-end">
+                </ul> */}
+                <p>{description}</p>
+                <div>
                     <a
-                        href={urlNetlify}
+                        href={demo_url}
                         className="btn btn-primary card-link"
                         target="_blank"
                         rel=""

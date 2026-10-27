@@ -9,7 +9,7 @@ export const ProjectsProvider = ({ children }) => {
             'https://backend-juanidev-portfolio.vercel.app/api/projects'
         );
         const data = await response.json();
-        setProjects(data.products);
+        setProjects(data);
     };
 
     useEffect(() => {
