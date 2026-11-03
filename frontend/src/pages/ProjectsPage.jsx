@@ -4,7 +4,6 @@ import { Card } from '../components/Card.jsx';
 
 export const ProjectsPage = () => {
     const { projects, loading } = useContext(ProjectsContext);
-    console.log(projects);
     return (
         <section className="p-7 grid grid-cols-3 gap-5">
             {loading ? (
