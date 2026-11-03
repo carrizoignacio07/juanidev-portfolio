@@ -4,7 +4,11 @@ export const fetchThanks = (supabase) =>
         .select(
             `
             id,
-            creator
+            creator,
+            about,
+            img,
+            github_url,
+            about_url
         `
         )
         .order('id', { ascending: true });
