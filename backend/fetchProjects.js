@@ -9,15 +9,7 @@ export const fetchProjects = (supabase) =>
       github_url,
       demo_url,
       image_url,
-      created_at,
-      project_technologies (
-        technologies (
-          id,
-          name,
-          category,
-          icon
-        )
-      )
+      created_at
     `
         )
         .order('id', { ascending: true });

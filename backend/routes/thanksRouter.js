@@ -7,7 +7,6 @@ const thanksRouter = express.Router();
 
 thanksRouter.get('/', projectsMiddleware, async (req, res) => {
     const { data, error } = await fetchThanks(supabase);
-
     if (error) {
         console.error('Error fetching thanks:', error.message);
         return res.status(500).json({

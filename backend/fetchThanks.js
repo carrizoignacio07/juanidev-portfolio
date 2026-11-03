@@ -3,8 +3,8 @@ export const fetchThanks = (supabase) =>
         .from('thanks_to')
         .select(
             `
-      id,
-      creator,
-    `
+            id,
+            creator
+        `
         )
         .order('id', { ascending: true });

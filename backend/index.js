@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import projectsRouter from './routes/projectsRoutes.js';
 import thanksRouter from './routes/thanksRouter.js';
+import coursesRouter from './routes/coursesRouter.js';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(cors('*'));
 app.use('/api/projects', projectsRouter);
 app.use('/api/thanks', thanksRouter);
+app.use('/api/courses', coursesRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
