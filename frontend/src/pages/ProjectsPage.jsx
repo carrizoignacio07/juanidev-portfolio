@@ -1,9 +1,15 @@
-import { useContext } from 'react';
-import { ProjectsContext } from '../context/ProjectsContext.jsx';
+import { useEffect, useState } from 'react';
+import { fetchHttp } from '../helpers/fetchHttp';
 import { Card } from '../components/Card.jsx';
 
 export const ProjectsPage = () => {
-    const { projects, loading } = useContext(ProjectsContext);
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        fetchHttp('projects', setLoading, setProjects);
+    }, []);
+
     return (
         <section className="p-7 grid grid-cols-3 gap-5">
             {loading ? (

@@ -1,4 +1,5 @@
-export const fetchHttp = async (URL, setLoading, setState) => {
+export const fetchHttp = async (endPoint, setLoading, setState) => {
+    const URL = `https://backend-juanidev-portfolio.vercel.app/api/${endPoint}`;
     setLoading(true);
     try {
         const response = await fetch(URL);

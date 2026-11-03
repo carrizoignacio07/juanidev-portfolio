@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react';
 import { ThanksCard } from '../components/ThanksCard.jsx';
-import { useContext } from 'react';
-import { ThanksContext } from '../context/ThanksContext.jsx';
+import { fetchHttp } from '../helpers/fetchHttp';
 
 export const ThanksPage = () => {
-    const { thanks, loading } = useContext(ThanksContext);
-    console.log(thanks);
+    const [thanks, setThanks] = useState([]);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        fetchHttp('thanks', setLoading, setThanks);
+    }, []);
     return (
         <section className="p-7 grid grid-cols-3 gap-5">
             {loading ? (

@@ -10,10 +10,10 @@ export const NavBar = () => {
                 About me
             </NavLink>
             <NavLink
-                to="/stack"
+                to="/technologies"
                 className="text-black hover:bg-blue-300 p-3 rounded-2xl text-xl font-medium"
             >
-                Stack
+                Technologies
             </NavLink>
             <NavLink
                 to="/projects"
