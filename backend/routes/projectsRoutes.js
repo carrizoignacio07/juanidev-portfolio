@@ -17,5 +17,18 @@ projectsRouter.get('/', projectsMiddleware, async (req, res) => {
 
     return res.status(200).json(data);
 });
+projectsRouter.get('/:id', projectsMiddleware, async (req, res) => {
+    const { id } = req.params;
+    const { data, error } = await fetchProjects(supabase).eq('id', id);
+
+    if (error) {
+        console.error('Error fetching project:', error.message);
+        return res.status(500).json({
+            error: 'Failed to fetch project',
+        });
+    }
+
+    return res.status(200).json(data);
+});
 
 export default projectsRouter;

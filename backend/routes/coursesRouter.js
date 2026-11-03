@@ -16,5 +16,17 @@ coursesRouter.get('/', projectsMiddleware, async (req, res) => {
 
     return res.status(200).json(data);
 });
+coursesRouter.get('/:id', projectsMiddleware, async (req, res) => {
+    const { id } = req.params;
+    const { data, error } = await fetchCourses(supabase).eq('id', id);
+    if (error) {
+        console.error('Error fetching course:', error.message);
+        return res.status(500).json({
+            error: 'Failed to fetch course',
+        });
+    }
+
+    return res.status(200).json(data);
+});
 
 export default coursesRouter;
