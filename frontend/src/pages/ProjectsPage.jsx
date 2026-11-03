@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchHttp } from '../helpers/fetchHttp';
 import { Card } from '../components/Card.jsx';
+import { Loader } from '../components/Loader.jsx';
 
 export const ProjectsPage = () => {
     const [projects, setProjects] = useState([]);
@@ -13,7 +14,7 @@ export const ProjectsPage = () => {
     return (
         <section className="p-7 grid grid-cols-3 gap-5">
             {loading ? (
-                <p>Loading...</p>
+                <Loader />
             ) : (
                 projects.map((project) => (
                     <Card

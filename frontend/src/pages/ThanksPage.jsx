@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ThanksCard } from '../components/ThanksCard.jsx';
 import { fetchHttp } from '../helpers/fetchHttp';
+import { Loader } from '../components/Loader.jsx';
 
 export const ThanksPage = () => {
     const [thanks, setThanks] = useState([]);
@@ -11,7 +12,7 @@ export const ThanksPage = () => {
     return (
         <section className="p-7 grid grid-cols-3 gap-5">
             {loading ? (
-                <p>Loading...</p>
+                <Loader />
             ) : (
                 thanks.map((thank) => (
                     <ThanksCard

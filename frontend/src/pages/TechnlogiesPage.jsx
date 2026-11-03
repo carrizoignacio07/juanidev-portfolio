@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchHttp } from '../helpers/fetchHttp';
 import { TechCard } from '../components/TechCard';
+import { Loader } from '../components/Loader';
 
 export const TechnlogiesPage = () => {
     const [technologies, setTechnologies] = useState([]);
@@ -11,7 +12,7 @@ export const TechnlogiesPage = () => {
     return (
         <section className="p-7 grid grid-cols-3 gap-5">
             {loading ? (
-                <p>Loading...</p>
+                <Loader />
             ) : (
                 technologies.map((tech) => (
                     <TechCard
