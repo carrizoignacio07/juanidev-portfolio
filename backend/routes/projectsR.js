@@ -1,11 +1,26 @@
 import express from 'express';
-import { fetchProjects } from '../fetchProjects.js';
 import { supabase } from '../config/supabase.js';
-import projectsMiddleware from '../middleware/projectsMiddleware.js';
+import onlyGetMw from '../middleware/onlyGetMw.js';
 
-const projectsRouter = express.Router();
+const router = express.Router();
 
-projectsRouter.get('/', projectsMiddleware, async (req, res) => {
+const fetchProjects = (supabase) =>
+    supabase
+        .from('projects')
+        .select(
+            `
+                id,
+                title,
+                description,
+                github_url,
+                demo_url,
+                image_url,
+                created_at
+            `
+        )
+        .order('id', { ascending: true });
+
+router.get('/', onlyGetMw, async (req, res) => {
     const { data, error } = await fetchProjects(supabase);
 
     if (error) {
@@ -17,7 +32,7 @@ projectsRouter.get('/', projectsMiddleware, async (req, res) => {
 
     return res.status(200).json(data);
 });
-projectsRouter.get('/:id', projectsMiddleware, async (req, res) => {
+router.get('/:id', onlyGetMw, async (req, res) => {
     const { id } = req.params;
     const { data, error } = await fetchProjects(supabase).eq('id', id);
 
@@ -31,4 +46,4 @@ projectsRouter.get('/:id', projectsMiddleware, async (req, res) => {
     return res.status(200).json(data);
 });
 
-export default projectsRouter;
+export default router;

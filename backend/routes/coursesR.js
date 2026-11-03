@@ -1,11 +1,22 @@
 import express from 'express';
-import { fetchCourses } from '../fetchCourses.js';
 import { supabase } from '../config/supabase.js';
-import projectsMiddleware from '../middleware/projectsMiddleware.js';
+import onlyGetMw from '../middleware/onlyGetMw.js';
 
-const coursesRouter = express.Router();
+const router = express.Router();
 
-coursesRouter.get('/', projectsMiddleware, async (req, res) => {
+const fetchCourses = (supabase) =>
+    supabase
+        .from('courses')
+        .select(
+            `
+            id,
+            title,
+            url
+        `
+        )
+        .order('id', { ascending: true });
+
+router.get('/', onlyGetMw, async (req, res) => {
     const { data, error } = await fetchCourses(supabase);
     if (error) {
         console.error('Error fetching courses:', error.message);
@@ -16,7 +27,7 @@ coursesRouter.get('/', projectsMiddleware, async (req, res) => {
 
     return res.status(200).json(data);
 });
-coursesRouter.get('/:id', projectsMiddleware, async (req, res) => {
+router.get('/:id', onlyGetMw, async (req, res) => {
     const { id } = req.params;
     const { data, error } = await fetchCourses(supabase).eq('id', id);
     if (error) {
@@ -29,4 +40,4 @@ coursesRouter.get('/:id', projectsMiddleware, async (req, res) => {
     return res.status(200).json(data);
 });
 
-export default coursesRouter;
+export default router;

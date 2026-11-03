@@ -1,11 +1,25 @@
 import express from 'express';
-import { fetchThanks } from '../fetchThanks.js';
 import { supabase } from '../config/supabase.js';
-import projectsMiddleware from '../middleware/projectsMiddleware.js';
+import onlyGetMw from '../middleware/onlyGetMw.js';
 
-const thanksRouter = express.Router();
+const router = express.Router();
 
-thanksRouter.get('/', projectsMiddleware, async (req, res) => {
+const fetchThanks = (supabase) =>
+    supabase
+        .from('thanks_to')
+        .select(
+            `
+            id,
+            creator,
+            about,
+            img,
+            github_url,
+            about_url
+        `
+        )
+        .order('id', { ascending: true });
+
+router.get('/', onlyGetMw, async (req, res) => {
     const { data, error } = await fetchThanks(supabase);
     if (error) {
         console.error('Error fetching thanks:', error.message);
@@ -16,7 +30,7 @@ thanksRouter.get('/', projectsMiddleware, async (req, res) => {
 
     return res.status(200).json(data);
 });
-thanksRouter.get('/:id', projectsMiddleware, async (req, res) => {
+router.get('/:id', onlyGetMw, async (req, res) => {
     const { id } = req.params;
     const { data, error } = await fetchThanks(supabase).eq('id', id);
     if (error) {
@@ -29,4 +43,4 @@ thanksRouter.get('/:id', projectsMiddleware, async (req, res) => {
     return res.status(200).json(data);
 });
 
-export default thanksRouter;
+export default router;
