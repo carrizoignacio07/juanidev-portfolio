@@ -17,7 +17,7 @@ export const ProjectsPage = () => {
             ) : (
                 projects.map((project) => (
                     <Card
-                        key={project._id}
+                        id={project._id}
                         title={project.title}
                         description={project.description}
                         demo_url={project.demo_url}

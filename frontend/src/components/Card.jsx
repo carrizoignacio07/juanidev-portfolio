@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom';
+
 // Icons Imports
 import { FaGithub } from 'react-icons/fa';
 import { SiNetlify } from 'react-icons/si';
 
 export const Card = ({
+    id,
     title,
     description,
     demo_url,
@@ -17,7 +20,9 @@ export const Card = ({
                 alt={title}
             />
             <div className="mt-3 flex flex-wrap justify-center items-center gap-2">
-                <h3 className="text-xl font-bold mb-2">{title}</h3>
+                <Link to={`/projects/${id}`}>
+                    <h3 className="text-xl font-bold mb-2">{title}</h3>
+                </Link>
                 <p>
                     {description.length > 125
                         ? `${description.substring(0, 125)}...`
