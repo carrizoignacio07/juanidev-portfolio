@@ -22,7 +22,7 @@ export const ProjectsPage = () => {
                         title={project.title}
                         description={project.description}
                         demo_url={project.demo_url}
-                        urlGithub={project.urlGithub}
+                        urlGithub={project.github_url}
                         image_url={project.image_url}
                     />
                 ))

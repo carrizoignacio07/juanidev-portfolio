@@ -19,7 +19,7 @@ export const TechnlogiesPage = () => {
                         key={tech.id}
                         name={tech.name}
                         category={tech.category}
-                        image={tech.image}
+                        image={tech.icon}
                     />
                 ))
             )}
