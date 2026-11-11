@@ -1,6 +1,6 @@
 export const ContactForm = () => {
     return (
-        <form className="m-5 p-5 w-1/3 h-2/3 flex flex-col gap-4 justify-center items-center border border-gray-300 rounded">
+        <form className="m-0 min-w-2xl min-h-7 p-7 flex flex-col gap-4 justify-center items-center border border-gray-300 rounded">
             <input
                 type="text"
                 placeholder="Ignacio"
