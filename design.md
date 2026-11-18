@@ -366,24 +366,26 @@ Desde la raíz:
 
 Problemas detectados al revisar el código (útiles como backlog):
 
-1. **URL de API hardcodeada** en `fetchHttp.js` (`https://backend-juanidev-portfolio.vercel.app/api/`).
-   El proxy de Vite no se usa y no hay separación dev/prod.
-2. **Desajuste de campos en proyectos**: el backend devuelve `id` y `github_url`; el frontend usa
+> ✅ Resuelto: la URL de la API en `fetchHttp.js` ya no está hardcodeada (ahora `/api/`, con
+> `VITE_API_URL` como override) y las variables de Supabase están configuradas en el proyecto
+> `juanidev-portfolio` de Vercel.
+
+1. **Desajuste de campos en proyectos**: el backend devuelve `id` y `github_url`; el frontend usa
    `project._id` y `project.urlGithub`, por lo que el enlace de detalle y GitHub quedan vacíos.
-3. **Desajuste en tecnologías**: el backend devuelve `icon`; `TechnlogiesPage` pasa `tech.image`.
-4. **Falta `key`** en el `map` de `ProjectsPage`.
-5. **Páginas placeholder**: `Home`, `About`, `ProjectPage`, `NotFoundPage`.
-6. **Formulario de contacto sin lógica** y sin endpoint en el backend.
-7. **Formik declarado sin uso**.
-8. **Tema sin implementar**: `ThemeContext` existe, pero no hay toggle ni cambio de clases.
-9. **`LinksRRSS` sin usar**.
-10. **Botón "My Resume"** usa `Link` con `href` a un favicon; el comportamiento de descarga no es correcto.
-11. **Sin responsive**: grids fijos de 3 columnas sin breakpoints.
-12. **Sin tests**: el script `test` del backend es un placeholder.
-13. **Sin migraciones versionadas** ni documentación del esquema/RLS.
-14. **CORS abierto a `*`** y sin rate limiting.
-15. **Endpoint `courses` sin uso en el frontend**.
-16. **Health check** devuelve texto plano en `/`.
+2. **Desajuste en tecnologías**: el backend devuelve `icon`; `TechnlogiesPage` pasa `tech.image`.
+3. **Falta `key`** en el `map` de `ProjectsPage`.
+4. **Páginas placeholder**: `Home`, `About`, `ProjectPage`, `NotFoundPage`.
+5. **Formulario de contacto sin lógica** y sin endpoint en el backend.
+6. **Formik declarado sin uso**.
+7. **Tema sin implementar**: `ThemeContext` existe, pero no hay toggle ni cambio de clases.
+8. **`LinksRRSS` sin usar**.
+9. **Botón "My Resume"** usa `Link` con `href` a un favicon; el comportamiento de descarga no es correcto.
+10. **Sin responsive**: grids fijos de 3 columnas sin breakpoints.
+11. **Sin tests**: el script `test` del backend es un placeholder.
+12. **Sin migraciones versionadas** ni documentación del esquema/RLS.
+13. **CORS abierto a `*`** y sin rate limiting.
+14. **Endpoint `courses` sin uso en el frontend**.
+15. **Health check** devuelve texto plano en `/`.
 
 ---
 

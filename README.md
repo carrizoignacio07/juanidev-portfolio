@@ -46,7 +46,7 @@ El repositorio se despliega como un proyecto Vercel con dos servicios:
 - `backend` (Express), que recibe las solicitudes públicas bajo `/api/*`.
 - `frontend` (Vite), que recibe el resto del tráfico público.
 
-La aplicación consulta el backend en `/api/projects`. En producción, el rewrite de Vercel dirige esa ruta al servicio `backend`; en desarrollo, el proxy de Vite la dirige a `http://localhost:3000`. El backend consulta Supabase directamente, así que no hay bindings entre los servicios.
+La aplicación consulta el backend en `/api/*` (por ejemplo `/api/projects`). En producción, el rewrite de Vercel dirige esas rutas al servicio `backend` dentro del mismo dominio; en desarrollo, el proxy de Vite las dirige a `http://localhost:3000`. El backend consulta Supabase directamente, así que no hay bindings entre los servicios.
 
 Al importar el repositorio en Vercel, deja **Root Directory** en la raíz del repositorio y configura las variables de entorno `SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY` para los entornos que uses (Production, Preview y Development).
 
