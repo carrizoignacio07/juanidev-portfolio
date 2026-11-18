@@ -9,10 +9,16 @@ const fetchCourses = (supabase) =>
         .from('courses')
         .select(
             `
-            id,
-            title,
-            url
-        `
+    *,
+    course_technologies (
+      technologies (
+        id,
+        name,
+        category,
+        icon
+      )
+    )
+  `
         )
         .order('id', { ascending: true });
 

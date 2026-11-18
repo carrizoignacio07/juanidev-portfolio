@@ -1,8 +1,127 @@
+import {
+    FaCheckCircle,
+    FaClock,
+    FaEnvelope,
+    FaMapMarkerAlt,
+} from 'react-icons/fa';
+
 import { ContactForm } from '../components/ContactForm.jsx';
+import { LinksRRSS } from '../components/ui/LinksRRSS.jsx';
+import { PageIntro } from '../components/ui/PageIntro.jsx';
+import { contactContent } from '../data/mockData';
+
 export const ContactPage = () => {
     return (
-        <>
-            <ContactForm />
-        </>
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-5 py-10 sm:px-8 lg:gap-16 lg:px-12 lg:py-14">
+            <PageIntro
+                eyebrow="Contact"
+                title="Let's start a conversation."
+                description="Have a project in mind, a question, or just want to say hi? Drop me a message and I will get back to you."
+                breadcrumb={[{ label: 'Home', to: '/' }, { label: 'Contact' }]}
+            />
+
+            <div className="grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+                <div className="flex flex-col gap-6">
+                    <div className="card-surface flex flex-col gap-5 p-6 sm:p-8">
+                        <span className="chip w-fit">
+                            <FaCheckCircle aria-hidden="true" />
+                            {contactContent.availability}
+                        </span>
+                        <div className="flex flex-col gap-2">
+                            <h2 className="text-2xl font-bold text-slate-900">
+                                I am easy to reach
+                            </h2>
+                            <p className="text-sm leading-relaxed text-slate-600">
+                                Whether it is a project, a job offer or a quick
+                                question, my inbox is always open.
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-4 border-t border-slate-100 pt-5">
+                            <a
+                                href={`mailto:${contactContent.email}`}
+                                className="group flex items-start gap-3"
+                            >
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
+                                    <FaEnvelope aria-hidden="true" />
+                                </span>
+                                <span>
+                                    <span className="block text-xs text-slate-500">
+                                        Email
+                                    </span>
+                                    <span className="text-sm font-semibold text-slate-800 transition group-hover:text-blue-700">
+                                        {contactContent.email}
+                                    </span>
+                                </span>
+                            </a>
+
+                            <div className="flex items-start gap-3">
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                                    <FaMapMarkerAlt aria-hidden="true" />
+                                </span>
+                                <span>
+                                    <span className="block text-xs text-slate-500">
+                                        Location
+                                    </span>
+                                    <span className="text-sm font-semibold text-slate-800">
+                                        {contactContent.location}
+                                    </span>
+                                </span>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                                    <FaClock aria-hidden="true" />
+                                </span>
+                                <span>
+                                    <span className="block text-xs text-slate-500">
+                                        Response time
+                                    </span>
+                                    <span className="text-sm font-semibold text-slate-800">
+                                        {contactContent.responseTime}
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2 pt-1">
+                            {contactContent.socials.map(
+                                ({ label, href, icon: Icon }) => (
+                                    <LinksRRSS
+                                        key={label}
+                                        link={href}
+                                        label={label}
+                                        className="chip transition hover:bg-blue-100"
+                                    >
+                                        <Icon aria-hidden="true" /> {label}
+                                    </LinksRRSS>
+                                )
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="card-surface flex flex-col gap-4 p-6 sm:p-8">
+                        <h3 className="text-lg font-bold text-slate-900">
+                            Good to know
+                        </h3>
+                        {contactContent.faqs.map((faq) => (
+                            <div
+                                key={faq.question}
+                                className="border-l-2 border-blue-100 pl-4"
+                            >
+                                <p className="text-sm font-semibold text-slate-800">
+                                    {faq.question}
+                                </p>
+                                <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                                    {faq.answer}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <ContactForm />
+            </div>
+        </div>
     );
 };

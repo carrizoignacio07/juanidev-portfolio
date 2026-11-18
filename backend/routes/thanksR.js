@@ -14,7 +14,12 @@ const fetchThanks = (supabase) =>
             about,
             img,
             github_url,
-            about_url
+            about_url,
+            courses (
+                        id,
+                        title,
+                        url
+                    )
         `
         )
         .order('id', { ascending: true });
@@ -30,9 +35,10 @@ router.get('/', onlyGetMw, async (req, res) => {
 
     return res.status(200).json(data);
 });
-router.get('/:id', onlyGetMw, async (req, res) => {
-    const { id } = req.params;
-    const { data, error } = await fetchThanks(supabase).eq('id', id);
+
+router.get('/:creator', onlyGetMw, async (req, res) => {
+    const { creator } = req.params;
+    const { data, error } = await fetchThanks(supabase).eq('creator', creator);
     if (error) {
         console.error('Error fetching thank:', error.message);
         return res.status(500).json({

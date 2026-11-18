@@ -6,15 +6,21 @@ import { ScrollButton } from './components/ScrollButton.jsx';
 
 export const App = () => {
     return (
-        <>
-            <ThemeProvider>
+        <ThemeProvider>
+            <div className="flex min-h-screen flex-col">
+                <a
+                    href="#main-content"
+                    className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+                >
+                    Skip to content
+                </a>
                 <Header />
-                <main className="m-0 p-0 flex flex-col justify-center items-center gap-5 min-h-[calc(100vh-10rem)]">
+                <main id="main-content" className="flex flex-1 flex-col">
                     <AppRoutes />
-                    <ScrollButton />
                 </main>
                 <Footer />
-            </ThemeProvider>
-        </>
+            </div>
+            <ScrollButton />
+        </ThemeProvider>
     );
 };
