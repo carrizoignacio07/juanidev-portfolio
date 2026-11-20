@@ -1,16 +1,17 @@
 import { useMemo } from 'react';
-import { FaDatabase, FaGraduationCap, FaHeart } from 'react-icons/fa';
+import { FaGraduationCap, FaHeart } from 'react-icons/fa';
 
 import { Loader } from '../components/Loader.jsx';
 import { ThanksCard } from '../components/ThanksCard.jsx';
+import { ApiErrorState } from '../components/ui/ApiErrorState';
 import { CallToAction } from '../components/ui/CallToAction';
 import { PageIntro } from '../components/ui/PageIntro';
 import { SectionHeading } from '../components/ui/SectionHeading';
-import { mockThanks, withThanksVisuals } from '../data/mockData';
+import { withThanksVisuals } from '../data/mockData';
 import { useApiData } from '../hooks/useApiData';
 
 export const ThanksPage = () => {
-    const { data, loading, isFallback } = useApiData('thanks', mockThanks);
+    const { data, loading, error, reload } = useApiData('thanks');
 
     const thanks = useMemo(
         () => data.map((item) => withThanksVisuals(item)),
@@ -42,21 +43,15 @@ export const ThanksPage = () => {
                     <span className="chip">
                         <FaHeart aria-hidden="true" /> {thanks.length} mentions
                     </span>
-                    {isFallback && (
-                        <span
-                            className="chip"
-                            title="The API is unavailable, so sample acknowledgements are shown"
-                        >
-                            <FaDatabase aria-hidden="true" /> Preview content
-                        </span>
-                    )}
                 </div>
             </PageIntro>
 
             {loading ? (
                 <Loader label="Loading acknowledgements…" />
-            ) : (
-                <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            ) : error ? (
+                <ApiErrorState label="acknowledgements" onRetry={reload} />
+            ) : thanks.length > 0 ? (
+                <section className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                     {thanks.map((item) => (
                         <ThanksCard
                             key={item.id ?? item.creator}
@@ -64,6 +59,10 @@ export const ThanksPage = () => {
                         />
                     ))}
                 </section>
+            ) : (
+                <div className="card-surface p-6 text-center text-sm text-slate-500 sm:p-10">
+                    No acknowledgements have been added yet.
+                </div>
             )}
 
             {courses.length > 0 && (
@@ -73,20 +72,20 @@ export const ThanksPage = () => {
                         title="Courses worth recommending"
                         subtitle="Some of the resources that helped me along the way."
                     />
-                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
                         {courses.map((course) => (
                             <a
                                 key={course.id ?? course.title}
                                 href={course.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="card-surface group flex items-center gap-4 p-5 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10"
+                                className="card-surface group flex items-center gap-4 p-4 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 sm:p-5"
                             >
                                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-xl text-blue-600 transition group-hover:scale-110">
                                     <FaGraduationCap aria-hidden="true" />
                                 </span>
                                 <span className="min-w-0">
-                                    <span className="block truncate font-semibold text-slate-900">
+                                    <span className="line-clamp-2 font-semibold text-slate-900">
                                         {course.title}
                                     </span>
                                     <span className="text-xs text-slate-500">

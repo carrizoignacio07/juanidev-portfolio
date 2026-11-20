@@ -54,6 +54,10 @@
         @apply inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700;
     }
 
+    .tap-target {
+        @apply inline-flex min-h-11 items-center justify-center;
+    }
+
     .eyebrow {
         @apply text-xs font-bold tracking-[0.2em] text-blue-600 uppercase;
     }

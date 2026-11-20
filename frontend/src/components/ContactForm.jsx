@@ -16,7 +16,7 @@ const initialValues = {
 };
 
 const fieldClass =
-    'w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 transition focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-100';
+    'min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-800 placeholder:text-slate-400 transition focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:text-sm';
 
 const validate = (values) => {
     const errors = {};
@@ -63,7 +63,7 @@ export const ContactForm = () => {
 
         return (
             <div
-                className="card-surface flex min-h-[30rem] flex-col items-center justify-center gap-5 p-8 text-center"
+                className="card-surface flex min-h-[24rem] flex-col items-center justify-center gap-5 p-6 text-center sm:min-h-[30rem] sm:p-8"
                 role="status"
                 aria-live="polite"
             >
@@ -80,13 +80,13 @@ export const ContactForm = () => {
                         to send it, or come back and write another one.
                     </p>
                 </div>
-                <a href={mailto} className="btn-primary">
+                <a href={mailto} className="btn-primary w-full sm:w-auto">
                     <FaEnvelope aria-hidden="true" /> Open email app
                 </a>
                 <button
                     type="button"
                     onClick={handleReset}
-                    className="btn-secondary"
+                    className="btn-secondary w-full sm:w-auto"
                 >
                     <FaRedo aria-hidden="true" /> Send another message
                 </button>

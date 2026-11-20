@@ -1,15 +1,16 @@
 import { useMemo, useState } from 'react';
-import { FaDatabase, FaLayerGroup } from 'react-icons/fa';
+import { FaLayerGroup } from 'react-icons/fa';
 
 import { Card } from '../components/Card.jsx';
 import { Loader } from '../components/Loader.jsx';
+import { ApiErrorState } from '../components/ui/ApiErrorState';
 import { CallToAction } from '../components/ui/CallToAction';
 import { PageIntro } from '../components/ui/PageIntro';
-import { mockProjects, withProjectVisuals } from '../data/mockData';
+import { withProjectVisuals } from '../data/mockData';
 import { useApiData } from '../hooks/useApiData';
 
 export const ProjectsPage = () => {
-    const { data, loading, isFallback } = useApiData('projects', mockProjects);
+    const { data, loading, error, reload } = useApiData('projects');
     const [filter, setFilter] = useState('All');
 
     const projects = useMemo(
@@ -44,14 +45,6 @@ export const ProjectsPage = () => {
                         <FaLayerGroup aria-hidden="true" /> {projects.length}{' '}
                         projects
                     </span>
-                    {isFallback && (
-                        <span
-                            className="chip"
-                            title="The API is unavailable, so sample projects are shown"
-                        >
-                            <FaDatabase aria-hidden="true" /> Preview content
-                        </span>
-                    )}
                 </div>
             </PageIntro>
 
@@ -67,7 +60,7 @@ export const ProjectsPage = () => {
                             type="button"
                             onClick={() => setFilter(tag)}
                             aria-pressed={filter === tag}
-                            className={`rounded-full px-4 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+                            className={`tap-target rounded-full px-4 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
                                 filter === tag
                                     ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25'
                                     : 'border border-blue-100 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700'
@@ -80,8 +73,10 @@ export const ProjectsPage = () => {
 
                 {loading ? (
                     <Loader label="Loading projects…" />
+                ) : error ? (
+                    <ApiErrorState label="projects" onRetry={reload} />
                 ) : visibleProjects.length > 0 ? (
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                         {visibleProjects.map((project) => (
                             <Card
                                 key={project.id ?? project.title}
@@ -90,7 +85,7 @@ export const ProjectsPage = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="card-surface p-10 text-center text-sm text-slate-500">
+                    <div className="card-surface p-6 text-center text-sm text-slate-500 sm:p-10">
                         No projects match this filter yet.
                     </div>
                 )}

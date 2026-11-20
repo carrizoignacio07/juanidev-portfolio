@@ -31,7 +31,7 @@ const SectionHeading = ({ eyebrow, title, subtitle, centered = false }) => {
             <span className="text-xs font-bold tracking-[0.2em] text-blue-600 uppercase">
                 {eyebrow}
             </span>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] sm:text-4xl">
                 {title}
             </h2>
             {subtitle && (
@@ -49,7 +49,7 @@ const SectionHeading = ({ eyebrow, title, subtitle, centered = false }) => {
 
 const Hero = () => {
     return (
-        <section className="relative w-full overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-sky-50 to-white px-6 py-14 sm:px-10 lg:px-16 lg:py-20">
+        <section className="relative w-full overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-sky-50 to-white px-5 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-20">
             <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-200/50 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-cyan-200/40 blur-3xl" />
 
@@ -63,7 +63,7 @@ const Hero = () => {
                         {heroContent.badge}
                     </span>
 
-                    <h1 className="text-4xl leading-tight font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                    <h1 className="text-3xl leading-tight font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">
                         <span className="block">
                             {heroContent.greeting}{' '}
                             <span className="text-gradient inline-block">
@@ -80,14 +80,14 @@ const Hero = () => {
                     <div className="flex flex-wrap items-center gap-4">
                         <Link
                             to={heroContent.primaryCta.to}
-                            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto"
                         >
                             {heroContent.primaryCta.label}
                             <FaArrowRight aria-hidden="true" />
                         </Link>
                         <Link
                             to={heroContent.secondaryCta.to}
-                            className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto"
                         >
                             <FaEnvelope aria-hidden="true" />
                             {heroContent.secondaryCta.label}
@@ -125,7 +125,7 @@ const Hero = () => {
                             </span>
                         </div>
 
-                        <pre className="mt-4 max-w-full overflow-x-auto whitespace-pre rounded-xl bg-slate-900 p-5 text-left font-mono text-xs leading-6 text-slate-200 sm:text-sm">
+                        <pre className="mt-4 max-w-full overflow-x-auto whitespace-pre rounded-xl bg-slate-900 p-4 text-left font-mono text-[11px] leading-6 text-slate-200 sm:p-5 sm:text-sm">
                             <code>
                                 <span className="text-blue-300">const</span>{' '}
                                 developer = {'{'}
@@ -199,7 +199,7 @@ const Stats = () => {
         <section
             id="stats"
             aria-label="Quick stats"
-            className="grid w-full grid-cols-2 gap-4 rounded-3xl border border-blue-100 bg-white/70 p-6 shadow-sm sm:grid-cols-4 sm:p-8"
+            className="grid w-full grid-cols-2 gap-3 rounded-3xl border border-blue-100 bg-white/70 p-4 shadow-sm sm:grid-cols-4 sm:gap-4 sm:p-8"
         >
             {stats.map(({ icon: Icon, value, label }) => (
                 <div
@@ -210,10 +210,12 @@ const Stats = () => {
                         className="mb-1 text-2xl text-blue-500"
                         aria-hidden="true"
                     />
-                    <span className="text-3xl font-bold text-slate-900">
+                    <span className="text-2xl font-bold text-slate-900 sm:text-3xl">
                         {value}
                     </span>
-                    <span className="text-sm text-slate-500">{label}</span>
+                    <span className="text-xs text-slate-500 sm:text-sm">
+                        {label}
+                    </span>
                 </div>
             ))}
         </section>
@@ -222,7 +224,7 @@ const Stats = () => {
 
 const ServiceCard = ({ icon: Icon, title, description, tags, gradient }) => {
     return (
-        <article className="group flex flex-col gap-4 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10">
+        <article className="group flex flex-col gap-4 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 sm:p-6">
             <span
                 className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-xl text-white shadow-md`}
             >
@@ -275,7 +277,7 @@ const ProjectCard = ({
     return (
         <article className="group flex flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10">
             <div
-                className={`relative flex h-40 items-center justify-center bg-gradient-to-br ${cover}`}
+                className={`relative flex h-36 items-center justify-center bg-gradient-to-br ${cover} sm:h-40`}
             >
                 <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:18px_18px]" />
                 <Icon
@@ -286,7 +288,7 @@ const ProjectCard = ({
                     Featured
                 </span>
             </div>
-            <div className="flex flex-1 flex-col p-6">
+            <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-lg font-bold text-slate-900">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
                     {description}
@@ -301,12 +303,12 @@ const ProjectCard = ({
                         </li>
                     ))}
                 </ul>
-                <div className="mt-auto flex items-center gap-5 pt-6">
+                <div className="mt-auto flex flex-wrap items-center gap-4 pt-5 sm:gap-5">
                     <a
                         href={demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800"
+                        className="tap-target gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800"
                     >
                         <FaExternalLinkAlt aria-hidden="true" /> Demo
                     </a>
@@ -314,7 +316,7 @@ const ProjectCard = ({
                         href={githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
+                        className="tap-target gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
                     >
                         <FaGithub aria-hidden="true" /> Code
                     </a>
@@ -351,17 +353,17 @@ const Projects = () => {
 
 const TechStack = () => {
     return (
-        <section className="flex w-full flex-col gap-8 rounded-3xl border border-blue-100 bg-white/70 p-8 sm:p-10">
+        <section className="flex w-full flex-col gap-8 rounded-3xl border border-blue-100 bg-white/70 p-5 sm:p-10">
             <SectionHeading
                 eyebrow="Toolbox"
                 title="Technologies I work with"
                 subtitle="The tools I reach for most often, depending on what the project needs."
                 centered
             />
-            <ul className="flex flex-wrap justify-center gap-3">
+            <ul className="flex flex-wrap justify-center gap-2 sm:gap-3">
                 {techStack.map(({ name, icon: Icon, color }) => (
                     <li key={name}>
-                        <span className="inline-flex items-center gap-2 rounded-xl border border-blue-100 bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700">
+                        <span className="tap-target gap-2 rounded-xl border border-blue-100 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700">
                             <Icon
                                 className={`text-xl ${color}`}
                                 aria-hidden="true"

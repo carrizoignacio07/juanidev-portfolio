@@ -1,5 +1,5 @@
-// Sample content used as a graceful fallback when the API is unavailable (or
-// returns an empty collection), plus content for pages that have no endpoint.
+// Sample content and visual defaults. API-backed pages render only real API
+// results and show an explicit error/empty state instead of falling back here.
 
 import {
     FaChartLine,
@@ -539,17 +539,9 @@ export const withTechVisuals = (tech = {}) => {
     };
 };
 
-export const withThanksVisuals = (thank = {}) => {
-    const mock = mockThanks.find(
-        (item) => sameId(item.id, thank.id) || item.creator === thank.creator
-    );
-
-    return {
-        ...mock,
-        ...thank,
-        avatar: mock?.avatar ?? 'from-blue-500 to-cyan-400',
-        img: thank.img ?? null,
-        courses:
-            thank.courses?.length > 0 ? thank.courses : (mock?.courses ?? []),
-    };
-};
+export const withThanksVisuals = (thank = {}) => ({
+    ...thank,
+    avatar: thank.avatar || 'from-blue-500 to-cyan-400',
+    img: thank.img ?? null,
+    courses: Array.isArray(thank.courses) ? thank.courses : [],
+});

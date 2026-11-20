@@ -20,7 +20,7 @@ export const ContactPage = () => {
                 breadcrumb={[{ label: 'Home', to: '/' }, { label: 'Contact' }]}
             />
 
-            <div className="grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr]">
                 <div className="flex flex-col gap-6">
                     <div className="card-surface flex flex-col gap-5 p-6 sm:p-8">
                         <span className="chip w-fit">
@@ -49,7 +49,7 @@ export const ContactPage = () => {
                                     <span className="block text-xs text-slate-500">
                                         Email
                                     </span>
-                                    <span className="text-sm font-semibold text-slate-800 transition group-hover:text-blue-700">
+                                    <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere] transition group-hover:text-blue-700">
                                         {contactContent.email}
                                     </span>
                                 </span>
@@ -63,7 +63,7 @@ export const ContactPage = () => {
                                     <span className="block text-xs text-slate-500">
                                         Location
                                     </span>
-                                    <span className="text-sm font-semibold text-slate-800">
+                                    <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere]">
                                         {contactContent.location}
                                     </span>
                                 </span>
@@ -91,7 +91,7 @@ export const ContactPage = () => {
                                         key={label}
                                         link={href}
                                         label={label}
-                                        className="chip transition hover:bg-blue-100"
+                                        className="chip tap-target min-h-11 transition hover:bg-blue-100"
                                     >
                                         <Icon aria-hidden="true" /> {label}
                                     </LinksRRSS>
@@ -107,7 +107,7 @@ export const ContactPage = () => {
                         {contactContent.faqs.map((faq) => (
                             <div
                                 key={faq.question}
-                                className="border-l-2 border-blue-100 pl-4"
+                                className="border-l-2 border-blue-100 pl-3 sm:pl-4"
                             >
                                 <p className="text-sm font-semibold text-slate-800">
                                     {faq.question}

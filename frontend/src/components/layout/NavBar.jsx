@@ -12,7 +12,7 @@ const links = [
 ];
 
 const navLinkClass = ({ isActive }) =>
-    `rounded-full px-4 py-2 text-sm font-medium transition ${
+    `tap-target rounded-full px-3 text-sm font-medium transition sm:px-4 ${
         isActive
             ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25'
             : 'text-slate-600 hover:bg-blue-50 hover:text-blue-700'
@@ -63,7 +63,7 @@ export const NavBar = () => {
                 aria-expanded={open}
                 aria-controls="mobile-navigation"
                 aria-label={open ? 'Close menu' : 'Open menu'}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-blue-100 bg-white text-slate-700 transition hover:border-blue-300 hover:text-blue-700 lg:hidden"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 bg-white text-slate-700 transition hover:border-blue-300 hover:text-blue-700 lg:hidden"
             >
                 {open ? <FaTimes /> : <FaBars />}
             </button>
@@ -71,7 +71,7 @@ export const NavBar = () => {
             {open && (
                 <div
                     id="mobile-navigation"
-                    className="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-blue-100 bg-white/95 p-4 shadow-xl backdrop-blur lg:hidden"
+                    className="absolute inset-x-0 top-full flex max-h-[calc(100vh-4rem)] flex-col gap-1 overflow-y-auto border-b border-blue-100 bg-white/95 p-4 shadow-xl backdrop-blur lg:hidden"
                 >
                     {links.map(({ to, label, end }) => (
                         <NavLink
@@ -83,7 +83,10 @@ export const NavBar = () => {
                             {label}
                         </NavLink>
                     ))}
-                    <Link to="/contact" className="btn-primary mt-2 sm:hidden">
+                    <Link
+                        to="/contact"
+                        className="btn-primary mt-2 w-full sm:hidden"
+                    >
                         Let's talk <FaArrowRight aria-hidden="true" />
                     </Link>
                 </div>

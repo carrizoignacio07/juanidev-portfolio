@@ -9,7 +9,7 @@ import { stats } from '../data/homeMock.js';
 
 export const AboutPage = () => {
     return (
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-14 px-5 py-10 sm:px-8 lg:gap-20 lg:px-12 lg:py-14">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:gap-14 sm:px-8 lg:gap-20 lg:px-12 lg:py-14">
             <PageIntro
                 eyebrow="About me"
                 title="A developer who builds with purpose."
@@ -36,7 +36,7 @@ export const AboutPage = () => {
                         {aboutContent.facts.map((fact) => (
                             <div
                                 key={fact.label}
-                                className="card-surface flex items-center gap-3 p-4"
+                                className="card-surface flex items-center gap-3 p-4 sm:p-5"
                             >
                                 <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-blue-500" />
                                 <div>
@@ -64,13 +64,13 @@ export const AboutPage = () => {
                             </span>
                         </div>
 
-                        <div className="flex flex-col gap-5 p-6">
+                        <div className="flex flex-col gap-5 p-5 sm:p-6">
                             <div className="flex items-center gap-4">
-                                <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400 text-2xl font-bold text-white shadow-lg shadow-blue-500/25">
+                                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400 text-xl font-bold text-white shadow-lg shadow-blue-500/25 sm:h-20 sm:w-20 sm:text-2xl">
                                     JD
                                 </div>
                                 <div>
-                                    <p className="text-lg font-bold text-slate-900">
+                                    <p className="text-base font-bold text-slate-900 [overflow-wrap:anywhere] sm:text-lg">
                                         Ignacio Carrizo
                                     </p>
                                     <p className="text-sm font-medium text-blue-600">
@@ -83,7 +83,7 @@ export const AboutPage = () => {
                                 {aboutContent.lead}
                             </p>
 
-                            <pre className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-xs leading-6 text-slate-200">
+                            <pre className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-[11px] leading-6 text-slate-200 sm:text-xs">
                                 <code>
                                     <span className="text-blue-300">const</span>{' '}
                                     developer = {'{'}
@@ -140,11 +140,11 @@ export const AboutPage = () => {
                     title="How I got here"
                     subtitle="A short timeline of the steps that shaped the way I work today."
                 />
-                <ol className="relative flex flex-col gap-6 border-l-2 border-blue-100 pl-6 sm:pl-8">
+                <ol className="relative flex flex-col gap-6 border-l-2 border-blue-100 pl-5 sm:pl-8">
                     {aboutContent.timeline.map((item) => (
                         <li key={item.year} className="relative">
-                            <span className="absolute -left-8 top-2 h-4 w-4 rounded-full border-4 border-white bg-blue-600 shadow-sm sm:-left-10" />
-                            <div className="card-surface flex flex-col gap-2 p-6">
+                            <span className="absolute -left-7 top-2 h-4 w-4 rounded-full border-4 border-white bg-blue-600 shadow-sm sm:-left-10" />
+                            <div className="card-surface flex flex-col gap-2 p-5 sm:p-6">
                                 <span className="chip w-fit">{item.year}</span>
                                 <h3 className="text-lg font-bold text-slate-900">
                                     {item.role}
@@ -173,7 +173,7 @@ export const AboutPage = () => {
                         ({ icon: Icon, title, description }) => (
                             <article
                                 key={title}
-                                className="card-surface flex flex-col items-center gap-4 p-6 text-center transition hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10"
+                                className="card-surface flex flex-col items-center gap-4 p-5 text-center transition hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10 sm:p-6"
                             >
                                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 text-xl text-white shadow-md">
                                     <Icon aria-hidden="true" />

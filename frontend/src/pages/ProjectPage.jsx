@@ -10,24 +10,23 @@ import {
 
 import { Card } from '../components/Card.jsx';
 import { Loader } from '../components/Loader.jsx';
+import { ApiErrorState } from '../components/ui/ApiErrorState';
 import { CallToAction } from '../components/ui/CallToAction';
 import { PageIntro } from '../components/ui/PageIntro';
 import { SectionHeading } from '../components/ui/SectionHeading';
-import { mockProjects, withProjectVisuals } from '../data/mockData';
+import { withProjectVisuals } from '../data/mockData';
 import { useApiData } from '../hooks/useApiData';
 
 export const ProjectPage = () => {
     const { id } = useParams();
     const [heroImageFailed, setHeroImageFailed] = useState(false);
 
-    const { data, loading } = useApiData(
-        `projects/${encodeURIComponent(id)}`,
-        []
+    const { data, loading, error, reload } = useApiData(
+        `projects/${encodeURIComponent(id)}`
     );
+    const { data: projects } = useApiData('projects');
 
-    const project = data[0]
-        ? withProjectVisuals(data[0])
-        : mockProjects.find((item) => String(item.id) === String(id));
+    const project = data[0] ? withProjectVisuals(data[0]) : null;
 
     useEffect(() => {
         setHeroImageFailed(false);
@@ -37,6 +36,24 @@ export const ProjectPage = () => {
         return (
             <div className="mx-auto flex w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12">
                 <Loader label="Loading project…" />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-5 py-16 sm:px-8 lg:px-12">
+                <PageIntro
+                    eyebrow="Project"
+                    title="We couldn’t load this project."
+                    description="The API is unavailable right now. Please try again in a moment."
+                    breadcrumb={[
+                        { label: 'Home', to: '/' },
+                        { label: 'Projects', to: '/projects' },
+                        { label: 'Unavailable' },
+                    ]}
+                />
+                <ApiErrorState label="project" onRetry={reload} />
             </div>
         );
     }
@@ -62,7 +79,7 @@ export const ProjectPage = () => {
     }
 
     const Icon = project.icon;
-    const moreProjects = mockProjects
+    const moreProjects = projects
         .filter((item) => String(item.id) !== String(project.id))
         .slice(0, 3)
         .map((item) => withProjectVisuals(item));
@@ -70,7 +87,7 @@ export const ProjectPage = () => {
     const showHeroImage = Boolean(project.image_url) && !heroImageFailed;
 
     return (
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-5 py-10 sm:px-8 lg:gap-16 lg:px-12 lg:py-14">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:gap-12 sm:px-8 lg:gap-16 lg:px-12 lg:py-14">
             <PageIntro
                 eyebrow={project.role}
                 title={project.title}
@@ -91,9 +108,9 @@ export const ProjectPage = () => {
             </PageIntro>
 
             <div
-                className={`relative flex min-h-64 items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br ${project.cover}`}
+                className={`relative flex min-h-64 items-center justify-center overflow-hidden rounded-3xl bg-linear-to-br ${project.cover}`}
             >
-                <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:22px_22px]" />
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-size-[22px_22px]" />
                 {showHeroImage ? (
                     <img
                         src={project.image_url}
@@ -112,7 +129,7 @@ export const ProjectPage = () => {
                 </span>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
+            <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.4fr_0.6fr]">
                 <section className="card-surface flex flex-col gap-5 p-6 sm:p-8">
                     <SectionHeading eyebrow="Overview" title="What I built" />
                     {(project.longDescription ?? []).map((paragraph) => (
@@ -177,7 +194,7 @@ export const ProjectPage = () => {
                                     href={project.demo_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn-primary"
+                                    className="btn-primary w-full sm:w-auto"
                                 >
                                     <FaExternalLinkAlt aria-hidden="true" />{' '}
                                     Live demo
@@ -188,7 +205,7 @@ export const ProjectPage = () => {
                                     href={project.github_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn-secondary"
+                                    className="btn-secondary w-full sm:w-auto"
                                 >
                                     <FaGithub aria-hidden="true" /> Source code
                                 </a>
@@ -196,7 +213,7 @@ export const ProjectPage = () => {
                         </div>
                     </div>
 
-                    <div className="rounded-3xl border border-blue-100 bg-blue-50/60 p-6">
+                    <div className="rounded-3xl border border-blue-100 bg-blue-50/60 p-5 sm:p-6">
                         <FaLayerGroup
                             className="text-2xl text-blue-600"
                             aria-hidden="true"
@@ -218,18 +235,20 @@ export const ProjectPage = () => {
                 </aside>
             </div>
 
-            <section className="flex flex-col gap-8">
-                <SectionHeading
-                    eyebrow="Keep exploring"
-                    title="More projects"
-                    centered
-                />
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {moreProjects.map((item) => (
-                        <Card key={item.id} project={item} />
-                    ))}
-                </div>
-            </section>
+            {moreProjects.length > 0 && (
+                <section className="flex flex-col gap-8">
+                    <SectionHeading
+                        eyebrow="Keep exploring"
+                        title="More projects"
+                        centered
+                    />
+                    <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+                        {moreProjects.map((item) => (
+                            <Card key={item.id} project={item} />
+                        ))}
+                    </div>
+                </section>
+            )}
 
             <CallToAction
                 title="Like what you see?"

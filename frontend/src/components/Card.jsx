@@ -22,7 +22,7 @@ export const Card = ({ project }) => {
     return (
         <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10">
             <div
-                className={`relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br ${cover}`}
+                className={`relative flex h-36 items-center justify-center overflow-hidden bg-gradient-to-br ${cover} sm:h-44`}
             >
                 <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:18px_18px]" />
 
@@ -44,14 +44,14 @@ export const Card = ({ project }) => {
                     <Link
                         to={`/projects/${id}`}
                         aria-label={`See details of ${title}`}
-                        className="absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-blue-700 opacity-0 shadow-sm transition group-hover:opacity-100 focus-visible:opacity-100"
+                        className="tap-target absolute right-3 bottom-3 gap-1.5 rounded-full bg-white/90 px-3 text-xs font-semibold text-blue-700 shadow-sm transition focus-visible:opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
                     >
                         Details <FaArrowRight aria-hidden="true" />
                     </Link>
                 )}
             </div>
 
-            <div className="flex flex-1 flex-col gap-3 p-6">
+            <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
                 <h3 className="text-lg font-bold text-slate-900">
                     {id ? (
                         <Link
@@ -83,13 +83,13 @@ export const Card = ({ project }) => {
                 )}
 
                 {(demo_url || github_url) && (
-                    <div className="flex items-center gap-5 border-t border-slate-100 pt-4">
+                    <div className="flex flex-wrap items-center gap-4 border-t border-slate-100 pt-4 sm:gap-5">
                         {demo_url && (
                             <a
                                 href={demo_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800"
+                                className="tap-target gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800"
                             >
                                 <FaExternalLinkAlt aria-hidden="true" /> Demo
                             </a>
@@ -99,7 +99,7 @@ export const Card = ({ project }) => {
                                 href={github_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
+                                className="tap-target gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
                             >
                                 <FaGithub aria-hidden="true" /> Code
                             </a>

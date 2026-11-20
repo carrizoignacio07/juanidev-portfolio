@@ -1,19 +1,16 @@
 import { useMemo, useState } from 'react';
-import { FaDatabase } from 'react-icons/fa';
 
 import { Loader } from '../components/Loader.jsx';
 import { TechCard } from '../components/TechCard.jsx';
+import { ApiErrorState } from '../components/ui/ApiErrorState';
 import { CallToAction } from '../components/ui/CallToAction';
 import { PageIntro } from '../components/ui/PageIntro';
 import { SectionHeading } from '../components/ui/SectionHeading';
-import { mockTechnologies, withTechVisuals } from '../data/mockData';
+import { withTechVisuals } from '../data/mockData';
 import { useApiData } from '../hooks/useApiData';
 
 export const TechnlogiesPage = () => {
-    const { data, loading, isFallback } = useApiData(
-        'technologies',
-        mockTechnologies
-    );
+    const { data, loading, error, reload } = useApiData('technologies');
     const [category, setCategory] = useState('All');
 
     const technologies = useMemo(
@@ -57,14 +54,6 @@ export const TechnlogiesPage = () => {
             >
                 <div className="flex flex-wrap items-center gap-2 pt-2">
                     <span className="chip">{technologies.length} tools</span>
-                    {isFallback && (
-                        <span
-                            className="chip"
-                            title="The API is unavailable, so sample technologies are shown"
-                        >
-                            <FaDatabase aria-hidden="true" /> Preview content
-                        </span>
-                    )}
                 </div>
             </PageIntro>
 
@@ -79,7 +68,7 @@ export const TechnlogiesPage = () => {
                         type="button"
                         onClick={() => setCategory(item)}
                         aria-pressed={category === item}
-                        className={`rounded-full px-4 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+                        className={`tap-target rounded-full px-4 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
                             category === item
                                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25'
                                 : 'border border-blue-100 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700'
@@ -92,8 +81,10 @@ export const TechnlogiesPage = () => {
 
             {loading ? (
                 <Loader label="Loading technologies…" />
+            ) : error ? (
+                <ApiErrorState label="technologies" onRetry={reload} />
             ) : category !== 'All' ? (
-                <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <section className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
                     {visible.map((tech) => (
                         <TechCard key={tech.id ?? tech.name} tech={tech} />
                     ))}
@@ -109,7 +100,7 @@ export const TechnlogiesPage = () => {
                                 eyebrow={`${group.items.length} tools`}
                                 title={group.category}
                             />
-                            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
                                 {group.items.map((tech) => (
                                     <TechCard
                                         key={tech.id ?? tech.name}
@@ -122,33 +113,38 @@ export const TechnlogiesPage = () => {
                 </div>
             )}
 
-            <section className="card-surface flex flex-col gap-6 p-6 sm:p-8">
-                <SectionHeading
-                    eyebrow="Comfort zone"
-                    title="Where I feel at home"
-                    subtitle="A rough, honest view of the tools I use most often."
-                />
-                <div className="grid gap-5 md:grid-cols-2">
-                    {strongest.map((tech) => (
-                        <div key={tech.name} className="flex flex-col gap-2">
-                            <div className="flex items-center justify-between gap-2 text-sm">
-                                <span className="font-medium text-slate-800">
-                                    {tech.name}
-                                </span>
-                                <span className="text-slate-500">
-                                    {tech.levelValue}%
-                                </span>
+            {!error && strongest.length > 0 && (
+                <section className="card-surface flex flex-col gap-6 p-6 sm:p-8">
+                    <SectionHeading
+                        eyebrow="Comfort zone"
+                        title="Where I feel at home"
+                        subtitle="A rough, honest view of the tools I use most often."
+                    />
+                    <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
+                        {strongest.map((tech) => (
+                            <div
+                                key={tech.name}
+                                className="flex flex-col gap-2"
+                            >
+                                <div className="flex items-center justify-between gap-2 text-sm">
+                                    <span className="font-medium text-slate-800">
+                                        {tech.name}
+                                    </span>
+                                    <span className="text-slate-500">
+                                        {tech.levelValue}%
+                                    </span>
+                                </div>
+                                <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+                                    <div
+                                        className="h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-400"
+                                        style={{ width: `${tech.levelValue}%` }}
+                                    />
+                                </div>
                             </div>
-                            <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-                                <div
-                                    className="h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-400"
-                                    style={{ width: `${tech.levelValue}%` }}
-                                />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+                        ))}
+                    </div>
+                </section>
+            )}
 
             <CallToAction
                 title="The right tool for your idea"

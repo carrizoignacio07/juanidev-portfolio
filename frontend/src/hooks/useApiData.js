@@ -1,45 +1,45 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { fetchHttp } from '../helpers/fetchHttp';
 
 /**
- * Fetches a collection from the API and falls back to sample data when the
- * request fails or the API returns an empty response.
+ * Fetches a collection from the API. It never replaces API results with mock
+ * data: failures are exposed as `error` so each page can render its own state.
+ * An empty collection is a valid response, not an API failure.
  */
-export const useApiData = (endPoint, fallbackData = []) => {
-    const [data, setData] = useState(fallbackData);
+export const useApiData = (endPoint) => {
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isFallback, setIsFallback] = useState(false);
-
-    const fallbackRef = useRef(fallbackData);
-    fallbackRef.current = fallbackData;
+    const [error, setError] = useState(null);
+    const [reloadKey, setReloadKey] = useState(0);
 
     useEffect(() => {
         let active = true;
 
+        setLoading(true);
+        setError(null);
+
         fetchHttp(endPoint, setLoading)
             .then((result) => {
                 if (!active) return;
-                const items = Array.isArray(result) ? result : [];
-
-                if (items.length > 0) {
-                    setData(items);
-                    setIsFallback(false);
-                } else {
-                    setData(fallbackRef.current);
-                    setIsFallback(true);
-                }
+                setData(Array.isArray(result) ? result : []);
             })
-            .catch(() => {
+            .catch((err) => {
                 if (!active) return;
-                setData(fallbackRef.current);
-                setIsFallback(true);
+                setData([]);
+                setError(err);
             });
 
         return () => {
             active = false;
         };
-    }, [endPoint]);
+    }, [endPoint, reloadKey]);
 
-    return { data, loading, isFallback };
+    return {
+        data,
+        loading,
+        error,
+        isUnavailable: Boolean(error),
+        reload: () => setReloadKey((key) => key + 1),
+    };
 };

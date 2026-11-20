@@ -68,13 +68,13 @@ export const Footer = () => {
                         Full stack developer turning ideas into simple, fast and
                         beautiful web experiences.
                     </p>
-                    <div className="flex items-center gap-2 pt-1">
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
                         {socials.map(({ label, href, icon: Icon }) => (
                             <LinksRRSS
                                 key={label}
                                 link={href}
                                 label={label}
-                                className="h-9 w-9 rounded-full border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 hover:bg-blue-600 hover:text-white"
+                                className="h-11 w-11 rounded-full border border-white/10 bg-white/5 text-slate-300 hover:border-blue-400 hover:bg-blue-600 hover:text-white sm:h-9 sm:w-9"
                             >
                                 <Icon aria-hidden="true" />
                             </LinksRRSS>
@@ -90,7 +90,7 @@ export const Footer = () => {
                         <Link
                             key={to}
                             to={to}
-                            className="w-fit text-sm text-slate-400 transition hover:text-blue-300"
+                            className="tap-target w-fit gap-1 text-sm text-slate-400 transition hover:text-blue-300"
                         >
                             {label}
                         </Link>
