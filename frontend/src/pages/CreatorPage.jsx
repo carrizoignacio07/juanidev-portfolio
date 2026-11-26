@@ -161,16 +161,16 @@ export const CreatorPage = () => {
                                 href={course.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="card-surface group flex items-center gap-4 p-4 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 sm:p-5"
+                                className="card-surface group flex items-center gap-4 p-4 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 dark:hover:border-blue-500/60 dark:hover:shadow-blue-500/5 sm:p-5"
                             >
-                                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-xl text-blue-600 transition group-hover:scale-110">
+                                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-xl text-blue-600 transition group-hover:scale-110 dark:bg-slate-800 dark:text-blue-400">
                                     <FaGraduationCap aria-hidden="true" />
                                 </span>
                                 <span className="min-w-0 flex-1">
-                                    <span className="line-clamp-2 font-semibold text-slate-900">
+                                    <span className="line-clamp-2 font-semibold text-slate-900 dark:text-slate-100">
                                         {course.title}
                                     </span>
-                                    <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
+                                    <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
                                         Open course{' '}
                                         <FaExternalLinkAlt aria-hidden="true" />
                                     </span>
@@ -184,12 +184,12 @@ export const CreatorPage = () => {
                             className="text-3xl text-blue-500"
                             aria-hidden="true"
                         />
-                        <p className="text-sm leading-relaxed text-slate-600">
+                        <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                             No courses have been added for {name} yet.
                         </p>
                         <Link
                             to="/thanks"
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:text-blue-900"
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-200"
                         >
                             Meet other creators{' '}
                             <FaArrowRight aria-hidden="true" />

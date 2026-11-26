@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
     --animate-float: float 6s ease-in-out infinite;
     --animate-float-delayed: float 6s ease-in-out 1.5s infinite;
@@ -18,17 +20,35 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        color-scheme: light;
+    }
+
+    html.dark {
+        color-scheme: dark;
     }
 
     body {
         background-color: #f8fafc;
         color: #0f172a;
         -webkit-font-smoothing: antialiased;
+        transition:
+            background-color 200ms ease,
+            color 200ms ease;
+    }
+
+    html.dark body {
+        background-color: #020617;
+        color: #e2e8f0;
     }
 
     ::selection {
         background-color: #bfdbfe;
         color: #1e3a8a;
+    }
+
+    html.dark ::selection {
+        background-color: #1d4ed8;
+        color: #eff6ff;
     }
 
     button,
@@ -39,19 +59,19 @@
 
 @layer components {
     .btn-primary {
-        @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+        @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-blue-500 dark:hover:bg-blue-400 dark:focus-visible:outline-blue-400;
     }
 
     .btn-secondary {
-        @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+        @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300 dark:hover:border-blue-500 dark:hover:bg-slate-800 dark:focus-visible:outline-blue-400;
     }
 
     .card-surface {
-        @apply rounded-2xl border border-blue-100 bg-white shadow-sm;
+        @apply rounded-2xl border border-blue-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:shadow-none;
     }
 
     .chip {
-        @apply inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700;
+        @apply inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-500/15 dark:text-blue-300;
     }
 
     .tap-target {
@@ -59,7 +79,7 @@
     }
 
     .eyebrow {
-        @apply text-xs font-bold tracking-[0.2em] text-blue-600 uppercase;
+        @apply text-xs font-bold tracking-[0.2em] text-blue-600 uppercase dark:text-blue-400;
     }
 }
 

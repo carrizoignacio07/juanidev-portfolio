@@ -9,7 +9,7 @@ export const ApiErrorState = ({ label = 'content', onRetry }) => (
             className="text-3xl text-amber-500"
             aria-hidden="true"
         />
-        <p className="text-sm leading-relaxed text-slate-600">
+        <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
             We couldn’t load the {label}. Check your connection and try again.
         </p>
         {onRetry && (

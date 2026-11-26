@@ -5,7 +5,7 @@ import { NavBar } from './NavBar.jsx';
 
 export const Header = () => {
     return (
-        <header className="sticky top-0 z-40 border-b border-blue-100/80 bg-white/85 backdrop-blur-lg">
+        <header className="sticky top-0 z-40 border-b border-blue-100/80 bg-white/85 backdrop-blur-lg dark:border-slate-800/80 dark:bg-slate-950/85">
             <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-12">
                 <NavLink
                     to="/"
@@ -16,13 +16,13 @@ export const Header = () => {
                         {brand.initials}
                     </span>
                     <span className="flex flex-col leading-tight">
-                        <span className="text-base font-bold tracking-tight text-slate-900">
+                        <span className="text-base font-bold tracking-tight text-slate-900 dark:text-slate-100">
                             {brand.name}
-                            <span className="text-blue-600">
+                            <span className="text-blue-600 dark:text-blue-400">
                                 {brand.highlight}
                             </span>
                         </span>
-                        <span className="hidden text-[10px] font-medium tracking-[0.18em] text-slate-400 uppercase sm:block">
+                        <span className="hidden text-[10px] font-medium tracking-[0.18em] text-slate-400 uppercase dark:text-slate-500 sm:block">
                             {brand.role}
                         </span>
                     </span>

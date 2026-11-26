@@ -39,10 +39,10 @@ export const AboutPage = () => {
                             >
                                 <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-blue-500" />
                                 <div>
-                                    <p className="text-xs text-slate-500">
+                                    <p className="text-xs text-slate-500 dark:text-slate-400">
                                         {fact.label}
                                     </p>
-                                    <p className="text-sm font-semibold text-slate-800">
+                                    <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
                                         {fact.value}
                                     </p>
                                 </div>
@@ -53,12 +53,12 @@ export const AboutPage = () => {
 
                 <div className="relative">
                     <div className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-blue-200/50 to-cyan-100/60 blur-2xl" />
-                    <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl shadow-blue-900/5">
-                        <div className="flex items-center gap-2 border-b border-slate-100 px-5 py-4">
+                    <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl shadow-blue-900/5 dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/20">
+                        <div className="flex items-center gap-2 border-b border-slate-100 px-5 py-4 dark:border-slate-800">
                             <span className="h-3 w-3 rounded-full bg-red-300" />
                             <span className="h-3 w-3 rounded-full bg-amber-300" />
                             <span className="h-3 w-3 rounded-full bg-emerald-300" />
-                            <span className="ml-3 font-mono text-xs text-slate-400">
+                            <span className="ml-3 font-mono text-xs text-slate-400 dark:text-slate-500">
                                 about-me.md
                             </span>
                         </div>
@@ -69,16 +69,16 @@ export const AboutPage = () => {
                                     {brand.initials}
                                 </div>
                                 <div>
-                                    <p className="text-base font-bold text-slate-900 [overflow-wrap:anywhere] sm:text-lg">
+                                    <p className="text-base font-bold text-slate-900 [overflow-wrap:anywhere] dark:text-slate-100 sm:text-lg">
                                         {aboutContent.fullName}
                                     </p>
-                                    <p className="text-sm font-medium text-blue-600">
+                                    <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
                                         {brand.role}
                                     </p>
                                 </div>
                             </div>
 
-                            <p className="text-sm leading-relaxed text-slate-600">
+                            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                                 {aboutContent.lead}
                             </p>
 
@@ -121,7 +121,7 @@ export const AboutPage = () => {
 
             <section
                 aria-label="Quick stats"
-                className="grid w-full grid-cols-2 gap-4 rounded-3xl border border-blue-100 bg-white/70 p-6 shadow-sm sm:grid-cols-4 sm:p-8"
+                className="grid w-full grid-cols-2 gap-4 rounded-3xl border border-blue-100 bg-white/70 p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/70 sm:grid-cols-4 sm:p-8"
             >
                 {stats.map(({ icon: Icon, value, label }) => (
                     <div
@@ -132,10 +132,12 @@ export const AboutPage = () => {
                             className="mb-1 text-2xl text-blue-500"
                             aria-hidden="true"
                         />
-                        <span className="text-3xl font-bold text-slate-900">
+                        <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">
                             {value}
                         </span>
-                        <span className="text-sm text-slate-500">{label}</span>
+                        <span className="text-sm text-slate-500 dark:text-slate-400">
+                            {label}
+                        </span>
                     </div>
                 ))}
             </section>
@@ -146,20 +148,20 @@ export const AboutPage = () => {
                     title={aboutContent.journey.title}
                     subtitle={aboutContent.journey.subtitle}
                 />
-                <ol className="relative flex flex-col gap-6 border-l-2 border-blue-100 pl-5 sm:pl-8">
+                <ol className="relative flex flex-col gap-6 border-l-2 border-blue-100 pl-5 dark:border-slate-800 sm:pl-8">
                     {aboutContent.timeline.map((item) => (
                         <li key={item.year} className="relative">
-                            <span className="absolute -left-7 top-2 h-4 w-4 rounded-full border-4 border-white bg-blue-600 shadow-sm sm:-left-10" />
+                            <span className="absolute -left-7 top-2 h-4 w-4 rounded-full border-4 border-white bg-blue-600 shadow-sm dark:border-slate-950 dark:bg-blue-500 sm:-left-10" />
                             <div className="card-surface flex flex-col gap-2 p-5 sm:p-6">
                                 <span className="chip w-fit">{item.year}</span>
-                                <h3 className="text-lg font-bold text-slate-900">
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                                     {item.role}
                                 </h3>
-                                <p className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600">
+                                <p className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400">
                                     <FaMapMarkerAlt aria-hidden="true" />
                                     {item.place}
                                 </p>
-                                <p className="text-sm leading-relaxed text-slate-600">
+                                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                                     {item.description}
                                 </p>
                             </div>
@@ -184,10 +186,10 @@ export const AboutPage = () => {
                                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 text-xl text-white shadow-md">
                                     <Icon aria-hidden="true" />
                                 </span>
-                                <h3 className="text-lg font-bold text-slate-900">
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                                     {title}
                                 </h3>
-                                <p className="text-sm leading-relaxed text-slate-600">
+                                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                                     {description}
                                 </p>
                             </article>
@@ -202,7 +204,7 @@ export const AboutPage = () => {
                 primary={{ label: aboutContent.cta.label, to: '/contact' }}
             />
 
-            <p className="flex items-center justify-center gap-2 text-center text-xs text-slate-400">
+            <p className="flex items-center justify-center gap-2 text-center text-xs text-slate-400 dark:text-slate-500">
                 <FaCode aria-hidden="true" /> {aboutContent.note}
             </p>
         </div>

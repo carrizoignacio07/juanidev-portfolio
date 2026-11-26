@@ -13,10 +13,10 @@ export const NotFoundPage = () => {
 
             <div className="flex flex-col gap-3">
                 <span className="eyebrow">Page not found</span>
-                <h1 className="text-2xl font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] sm:text-4xl">
+                <h1 className="text-2xl font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] dark:text-slate-100 sm:text-4xl">
                     This page took a detour
                 </h1>
-                <p className="mx-auto max-w-md text-base leading-relaxed text-slate-600">
+                <p className="mx-auto max-w-md text-base leading-relaxed text-slate-600 dark:text-slate-400">
                     The page you are looking for does not exist or has moved.
                     Let's get you back on track.
                 </p>
@@ -46,7 +46,7 @@ export const NotFoundPage = () => {
                 </Link>
             </div>
 
-            <p className="inline-flex items-center gap-2 text-xs text-slate-400">
+            <p className="inline-flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
                 <FaSearch aria-hidden="true" />
                 You can also use the navigation above to explore the site.
             </p>

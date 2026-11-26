@@ -124,7 +124,7 @@ export const ProjectPage = () => {
                         aria-hidden="true"
                     />
                 ) : null}
-                <span className="absolute top-5 left-5 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-blue-700">
+                <span className="absolute top-5 left-5 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-slate-900/85 dark:text-blue-300">
                     Case study · {project.year}
                 </span>
             </div>
@@ -135,20 +135,20 @@ export const ProjectPage = () => {
                     {(project.longDescription ?? []).map((paragraph) => (
                         <p
                             key={paragraph}
-                            className="text-base leading-relaxed text-slate-600"
+                            className="text-base leading-relaxed text-slate-600 dark:text-slate-400"
                         >
                             {paragraph}
                         </p>
                     ))}
 
-                    <h3 className="mt-2 text-lg font-bold text-slate-900">
+                    <h3 className="mt-2 text-lg font-bold text-slate-900 dark:text-slate-100">
                         Highlights
                     </h3>
                     <ul className="grid gap-3 sm:grid-cols-2">
                         {(project.highlights ?? []).map((highlight) => (
                             <li
                                 key={highlight}
-                                className="flex gap-2 text-sm leading-relaxed text-slate-600"
+                                className="flex gap-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
                             >
                                 <FaCheckCircle
                                     className="mt-0.5 shrink-0 text-blue-500"
@@ -162,27 +162,31 @@ export const ProjectPage = () => {
 
                 <aside className="flex flex-col gap-6">
                     <div className="card-surface flex flex-col p-6">
-                        <h3 className="text-lg font-bold text-slate-900">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                             At a glance
                         </h3>
                         <dl className="mt-4 flex flex-col gap-4 text-sm">
                             <div>
-                                <dt className="text-xs text-slate-500">Role</dt>
-                                <dd className="font-medium text-slate-800">
+                                <dt className="text-xs text-slate-500 dark:text-slate-400">
+                                    Role
+                                </dt>
+                                <dd className="font-medium text-slate-800 dark:text-slate-200">
                                     {project.role}
                                 </dd>
                             </div>
                             <div>
-                                <dt className="text-xs text-slate-500">Year</dt>
-                                <dd className="font-medium text-slate-800">
+                                <dt className="text-xs text-slate-500 dark:text-slate-400">
+                                    Year
+                                </dt>
+                                <dd className="font-medium text-slate-800 dark:text-slate-200">
                                     {project.year || '—'}
                                 </dd>
                             </div>
                             <div>
-                                <dt className="text-xs text-slate-500">
+                                <dt className="text-xs text-slate-500 dark:text-slate-400">
                                     Stack
                                 </dt>
-                                <dd className="font-medium text-slate-800">
+                                <dd className="font-medium text-slate-800 dark:text-slate-200">
                                     {(project.tags ?? []).join(' · ') || '—'}
                                 </dd>
                             </div>
@@ -213,21 +217,21 @@ export const ProjectPage = () => {
                         </div>
                     </div>
 
-                    <div className="rounded-3xl border border-blue-100 bg-blue-50/60 p-5 sm:p-6">
+                    <div className="rounded-3xl border border-blue-100 bg-blue-50/60 p-5 dark:border-slate-800 dark:bg-slate-900/70 sm:p-6">
                         <FaLayerGroup
-                            className="text-2xl text-blue-600"
+                            className="text-2xl text-blue-600 dark:text-blue-400"
                             aria-hidden="true"
                         />
-                        <h3 className="mt-3 text-lg font-bold text-slate-900">
+                        <h3 className="mt-3 text-lg font-bold text-slate-900 dark:text-slate-100">
                             Want to see more?
                         </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                             There are more experiments and full applications in
                             the project list.
                         </p>
                         <Link
                             to="/projects"
-                            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:text-blue-900"
+                            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-200"
                         >
                             All projects <FaArrowRight aria-hidden="true" />
                         </Link>

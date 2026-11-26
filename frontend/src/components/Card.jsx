@@ -20,7 +20,7 @@ export const Card = ({ project }) => {
     const showImage = Boolean(image_url) && !imageFailed;
 
     return (
-        <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10">
+        <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/60 dark:hover:shadow-blue-500/5">
             <div
                 className={`relative flex h-36 items-center justify-center overflow-hidden bg-gradient-to-br ${cover} sm:h-44`}
             >
@@ -44,7 +44,7 @@ export const Card = ({ project }) => {
                     <Link
                         to={`/projects/${id}`}
                         aria-label={`See details of ${title}`}
-                        className="tap-target absolute right-3 bottom-3 gap-1.5 rounded-full bg-white/90 px-3 text-xs font-semibold text-blue-700 shadow-sm transition focus-visible:opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
+                        className="tap-target absolute right-3 bottom-3 gap-1.5 rounded-full bg-white/90 px-3 text-xs font-semibold text-blue-700 shadow-sm transition focus-visible:opacity-100 dark:bg-slate-900/90 dark:text-blue-300 lg:opacity-0 lg:group-hover:opacity-100"
                     >
                         Details <FaArrowRight aria-hidden="true" />
                     </Link>
@@ -52,11 +52,11 @@ export const Card = ({ project }) => {
             </div>
 
             <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                     {id ? (
                         <Link
                             to={`/projects/${id}`}
-                            className="transition hover:text-blue-700"
+                            className="transition hover:text-blue-700 dark:hover:text-blue-300"
                         >
                             {title}
                         </Link>
@@ -65,7 +65,7 @@ export const Card = ({ project }) => {
                     )}
                 </h3>
 
-                <p className="line-clamp-3 text-sm leading-relaxed text-slate-600">
+                <p className="line-clamp-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                     {description}
                 </p>
 
@@ -74,7 +74,7 @@ export const Card = ({ project }) => {
                         {tags.map((tag) => (
                             <li
                                 key={tag}
-                                className="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600"
+                                className="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300"
                             >
                                 {tag}
                             </li>
@@ -83,13 +83,13 @@ export const Card = ({ project }) => {
                 )}
 
                 {(demo_url || github_url) && (
-                    <div className="flex flex-wrap items-center gap-4 border-t border-slate-100 pt-4 sm:gap-5">
+                    <div className="flex flex-wrap items-center gap-4 border-t border-slate-100 pt-4 dark:border-slate-800 sm:gap-5">
                         {demo_url && (
                             <a
                                 href={demo_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="tap-target gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800"
+                                className="tap-target gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                             >
                                 <FaExternalLinkAlt aria-hidden="true" /> Demo
                             </a>
@@ -99,7 +99,7 @@ export const Card = ({ project }) => {
                                 href={github_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="tap-target gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
+                                className="tap-target gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700 dark:text-slate-400 dark:hover:text-blue-300"
                             >
                                 <FaGithub aria-hidden="true" /> Code
                             </a>

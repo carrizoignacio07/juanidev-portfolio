@@ -15,7 +15,9 @@ export const SectionHeading = ({
             {eyebrow && (
                 <span
                     className={`text-xs font-bold tracking-[0.2em] uppercase ${
-                        light ? 'text-blue-100' : 'text-blue-600'
+                        light
+                            ? 'text-blue-100'
+                            : 'text-blue-600 dark:text-blue-400'
                     }`}
                 >
                     {eyebrow}
@@ -23,7 +25,7 @@ export const SectionHeading = ({
             )}
             <h2
                 className={`text-3xl font-bold tracking-tight sm:text-4xl ${
-                    light ? 'text-white' : 'text-slate-900'
+                    light ? 'text-white' : 'text-slate-900 dark:text-slate-100'
                 }`}
             >
                 {title}
@@ -31,7 +33,9 @@ export const SectionHeading = ({
             {subtitle && (
                 <p
                     className={`max-w-2xl text-base leading-relaxed ${
-                        light ? 'text-blue-50' : 'text-slate-600'
+                        light
+                            ? 'text-blue-50'
+                            : 'text-slate-600 dark:text-slate-400'
                     } ${centered ? 'mx-auto' : ''}`}
                 >
                     {subtitle}

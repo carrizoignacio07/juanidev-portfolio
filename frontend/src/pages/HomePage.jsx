@@ -30,15 +30,15 @@ const SectionHeading = ({ eyebrow, title, subtitle, centered = false }) => {
                 centered ? 'items-center text-center' : 'items-start'
             }`}
         >
-            <span className="text-xs font-bold tracking-[0.2em] text-blue-600 uppercase">
+            <span className="text-xs font-bold tracking-[0.2em] text-blue-600 uppercase dark:text-blue-400">
                 {eyebrow}
             </span>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] sm:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] dark:text-slate-100 sm:text-4xl">
                 {title}
             </h2>
             {subtitle && (
                 <p
-                    className={`max-w-2xl text-base leading-relaxed text-slate-600 ${
+                    className={`max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400 ${
                         centered ? 'mx-auto' : ''
                     }`}
                 >
@@ -51,13 +51,13 @@ const SectionHeading = ({ eyebrow, title, subtitle, centered = false }) => {
 
 const Hero = () => {
     return (
-        <section className="relative w-full overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-sky-50 to-white px-5 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-20">
-            <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-200/50 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-cyan-200/40 blur-3xl" />
+        <section className="relative w-full overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-sky-50 to-white px-5 py-10 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:px-10 sm:py-14 lg:px-16 lg:py-20">
+            <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-200/50 blur-3xl dark:bg-blue-500/10" />
+            <div className="pointer-events-none absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-cyan-200/40 blur-3xl dark:bg-cyan-500/10" />
 
             <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="flex flex-col items-start gap-6">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm dark:border-slate-700 dark:bg-slate-900/80 dark:text-blue-300">
                         <span className="relative flex h-2.5 w-2.5">
                             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
@@ -65,7 +65,7 @@ const Hero = () => {
                         {heroContent.badge}
                     </span>
 
-                    <h1 className="text-3xl leading-tight font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">
+                    <h1 className="text-3xl leading-tight font-bold tracking-tight text-slate-900 [overflow-wrap:anywhere] dark:text-slate-100 sm:text-5xl lg:text-6xl">
                         <span className="block">
                             {heroContent.greeting}{' '}
                             <span className="text-gradient inline-block">
@@ -75,28 +75,28 @@ const Hero = () => {
                         <span className="block">{heroContent.headline}</span>
                     </h1>
 
-                    <p className="max-w-xl text-lg leading-relaxed text-slate-600">
+                    <p className="max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
                         {heroContent.description}
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4">
                         <Link
                             to={heroContent.primaryCta.to}
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-blue-500 dark:hover:bg-blue-400 dark:focus-visible:outline-blue-400 sm:w-auto"
                         >
                             {heroContent.primaryCta.label}
                             <FaArrowRight aria-hidden="true" />
                         </Link>
                         <Link
                             to={heroContent.secondaryCta.to}
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300 dark:hover:border-blue-500 dark:hover:bg-slate-800 dark:focus-visible:outline-blue-400 sm:w-auto"
                         >
                             <FaEnvelope aria-hidden="true" />
                             {heroContent.secondaryCta.label}
                         </Link>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-slate-400">
                         <span className="inline-flex items-center gap-1.5">
                             <FaMapMarkerAlt
                                 className="text-blue-500"
@@ -104,7 +104,7 @@ const Hero = () => {
                             />
                             {heroContent.location}
                         </span>
-                        <span className="h-1 w-1 rounded-full bg-slate-300" />
+                        <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-600" />
                         <span className="inline-flex items-center gap-1.5">
                             <FaCheckCircle
                                 className="text-emerald-500"
@@ -116,13 +116,13 @@ const Hero = () => {
                 </div>
 
                 <div className="relative mx-auto w-full max-w-md">
-                    <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-blue-300/40 to-cyan-200/40 blur-2xl" />
-                    <div className="relative rounded-3xl border border-blue-100 bg-white/90 p-4 shadow-2xl shadow-blue-900/10 backdrop-blur">
-                        <div className="flex items-center gap-2 border-b border-slate-100 px-2 pb-4">
+                    <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-blue-300/40 to-cyan-200/40 blur-2xl dark:from-blue-500/15 dark:to-cyan-500/10" />
+                    <div className="relative rounded-3xl border border-blue-100 bg-white/90 p-4 shadow-2xl shadow-blue-900/10 backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:shadow-black/30">
+                        <div className="flex items-center gap-2 border-b border-slate-100 px-2 pb-4 dark:border-slate-800">
                             <span className="h-3 w-3 rounded-full bg-red-300" />
                             <span className="h-3 w-3 rounded-full bg-amber-300" />
                             <span className="h-3 w-3 rounded-full bg-emerald-300" />
-                            <span className="ml-3 font-mono text-xs text-slate-400">
+                            <span className="ml-3 font-mono text-xs text-slate-400 dark:text-slate-500">
                                 developer.jsx
                             </span>
                         </div>
@@ -158,26 +158,26 @@ const Hero = () => {
                             </code>
                         </pre>
 
-                        <div className="mt-4 flex items-center gap-3 rounded-2xl bg-blue-50 p-3">
+                        <div className="mt-4 flex items-center gap-3 rounded-2xl bg-blue-50 p-3 dark:bg-slate-800">
                             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 text-lg font-bold text-white">
                                 {brand.initials}
                             </div>
                             <div>
-                                <p className="text-sm font-semibold text-slate-800">
+                                <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">
                                     {brand.name} {brand.highlight}
                                 </p>
-                                <p className="text-xs text-slate-500">
+                                <p className="text-xs text-slate-500 dark:text-slate-400">
                                     {brand.role} · Remote
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute -left-6 top-1/4 hidden animate-float items-center gap-2 rounded-xl border border-blue-100 bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-lg sm:flex">
+                    <div className="absolute -left-6 top-1/4 hidden animate-float items-center gap-2 rounded-xl border border-blue-100 bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-lg dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300 sm:flex">
                         <SiReact className="text-sky-500" aria-hidden="true" />
                         React
                     </div>
-                    <div className="absolute -right-4 bottom-16 hidden animate-float-delayed items-center gap-2 rounded-xl border border-blue-100 bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-lg sm:flex">
+                    <div className="absolute -right-4 bottom-16 hidden animate-float-delayed items-center gap-2 rounded-xl border border-blue-100 bg-white px-3 py-2 text-sm font-semibold text-blue-600 shadow-lg dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300 sm:flex">
                         <SiTailwindcss
                             className="text-cyan-500"
                             aria-hidden="true"
@@ -203,7 +203,7 @@ const Stats = () => {
         <section
             id="stats"
             aria-label="Quick stats"
-            className="grid w-full grid-cols-2 gap-3 rounded-3xl border border-blue-100 bg-white/70 p-4 shadow-sm sm:grid-cols-4 sm:gap-4 sm:p-8"
+            className="grid w-full grid-cols-2 gap-3 rounded-3xl border border-blue-100 bg-white/70 p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70 sm:grid-cols-4 sm:gap-4 sm:p-8"
         >
             {stats.map(({ icon: Icon, value, label }) => (
                 <div
@@ -214,10 +214,10 @@ const Stats = () => {
                         className="mb-1 text-2xl text-blue-500"
                         aria-hidden="true"
                     />
-                    <span className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                    <span className="text-2xl font-bold text-slate-900 dark:text-slate-100 sm:text-3xl">
                         {value}
                     </span>
-                    <span className="text-xs text-slate-500 sm:text-sm">
+                    <span className="text-xs text-slate-500 dark:text-slate-400 sm:text-sm">
                         {label}
                     </span>
                 </div>
@@ -228,21 +228,23 @@ const Stats = () => {
 
 const ServiceCard = ({ icon: Icon, title, description, tags, gradient }) => {
     return (
-        <article className="group flex flex-col gap-4 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 sm:p-6">
+        <article className="group flex flex-col gap-4 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/60 dark:hover:shadow-blue-500/5 sm:p-6">
             <span
                 className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-xl text-white shadow-md`}
             >
                 <Icon aria-hidden="true" />
             </span>
-            <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
-            <p className="text-sm leading-relaxed text-slate-600">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+                {title}
+            </h3>
+            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                 {description}
             </p>
             <ul className="mt-auto flex flex-wrap gap-2 pt-2">
                 {tags.map((tag) => (
                     <li
                         key={tag}
-                        className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700"
+                        className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-500/15 dark:text-blue-300"
                     >
                         {tag}
                     </li>
@@ -279,7 +281,7 @@ const ProjectCard = ({
     githubUrl,
 }) => {
     return (
-        <article className="group flex flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10">
+        <article className="group flex flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900 dark:hover:shadow-blue-500/5">
             <div
                 className={`relative flex h-36 items-center justify-center bg-gradient-to-br ${cover} sm:h-40`}
             >
@@ -288,20 +290,22 @@ const ProjectCard = ({
                     className="relative text-5xl text-white/90 transition duration-300 group-hover:scale-110"
                     aria-hidden="true"
                 />
-                <span className="absolute top-4 right-4 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-blue-700">
+                <span className="absolute top-4 right-4 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-slate-900/85 dark:text-blue-300">
                     Featured
                 </span>
             </div>
             <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <h3 className="text-lg font-bold text-slate-900">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                    {title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                     {description}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                         <li
                             key={tag}
-                            className="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600"
+                            className="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300"
                         >
                             {tag}
                         </li>
@@ -312,7 +316,7 @@ const ProjectCard = ({
                         href={demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="tap-target gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800"
+                        className="tap-target gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                     >
                         <FaExternalLinkAlt aria-hidden="true" /> Demo
                     </a>
@@ -320,7 +324,7 @@ const ProjectCard = ({
                         href={githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="tap-target gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
+                        className="tap-target gap-1.5 text-sm font-semibold text-slate-600 transition hover:text-blue-700 dark:text-slate-400 dark:hover:text-blue-300"
                     >
                         <FaGithub aria-hidden="true" /> Code
                     </a>
@@ -346,7 +350,7 @@ const Projects = () => {
             <div className="flex justify-center">
                 <Link
                     to="/projects"
-                    className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50"
+                    className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300 dark:hover:border-blue-500 dark:hover:bg-slate-800"
                 >
                     {homeCopy.projects.seeAll}{' '}
                     <FaArrowRight aria-hidden="true" />
@@ -358,7 +362,7 @@ const Projects = () => {
 
 const TechStack = () => {
     return (
-        <section className="flex w-full flex-col gap-8 rounded-3xl border border-blue-100 bg-white/70 p-5 sm:p-10">
+        <section className="flex w-full flex-col gap-8 rounded-3xl border border-blue-100 bg-white/70 p-5 dark:border-slate-800 dark:bg-slate-900/70 sm:p-10">
             <SectionHeading
                 eyebrow={homeCopy.tech.eyebrow}
                 title={homeCopy.tech.title}
@@ -368,7 +372,7 @@ const TechStack = () => {
             <ul className="flex flex-wrap justify-center gap-2 sm:gap-3">
                 {techStack.map(({ name, icon: Icon, color }) => (
                     <li key={name}>
-                        <span className="tap-target gap-2 rounded-xl border border-blue-100 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700">
+                        <span className="tap-target gap-2 rounded-xl border border-blue-100 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-500 dark:hover:text-blue-300">
                             <Icon
                                 className={`text-xl ${color}`}
                                 aria-hidden="true"

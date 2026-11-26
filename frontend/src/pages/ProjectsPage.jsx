@@ -63,7 +63,7 @@ export const ProjectsPage = () => {
                             className={`tap-target rounded-full px-4 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
                                 filter === tag
                                     ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25'
-                                    : 'border border-blue-100 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700'
+                                    : 'border border-blue-100 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-500 dark:hover:text-blue-300'
                             }`}
                         >
                             {tag}
@@ -85,7 +85,7 @@ export const ProjectsPage = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="card-surface p-6 text-center text-sm text-slate-500 sm:p-10">
+                    <div className="card-surface p-6 text-center text-sm text-slate-500 dark:text-slate-400 sm:p-10">
                         No projects match this filter yet.
                     </div>
                 )}

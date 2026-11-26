@@ -15,7 +15,7 @@ const quickLinks = [
 
 export const Footer = () => {
     return (
-        <footer className="relative mt-auto overflow-hidden bg-slate-900 text-slate-300">
+        <footer className="relative mt-auto overflow-hidden bg-slate-900 text-slate-300 dark:bg-slate-950 dark:text-slate-400">
             <div className="pointer-events-none absolute -top-24 left-1/4 h-64 w-64 rounded-full bg-blue-600/20 blur-3xl" />
 
             <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1.5fr_1fr_1fr] lg:px-12">

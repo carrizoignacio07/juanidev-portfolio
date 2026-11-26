@@ -28,55 +28,55 @@ export const ContactPage = () => {
                             {contactContent.availability}
                         </span>
                         <div className="flex flex-col gap-2">
-                            <h2 className="text-2xl font-bold text-slate-900">
+                            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                                 {contactContent.reach.title}
                             </h2>
-                            <p className="text-sm leading-relaxed text-slate-600">
+                            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                                 {contactContent.reach.description}
                             </p>
                         </div>
 
-                        <div className="flex flex-col gap-4 border-t border-slate-100 pt-5">
+                        <div className="flex flex-col gap-4 border-t border-slate-100 pt-5 dark:border-slate-800">
                             <a
                                 href={`mailto:${contactContent.email}`}
                                 className="group flex items-start gap-3"
                             >
-                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white dark:bg-slate-800 dark:text-blue-400 dark:group-hover:bg-blue-500 dark:group-hover:text-white">
                                     <FaEnvelope aria-hidden="true" />
                                 </span>
                                 <span>
-                                    <span className="block text-xs text-slate-500">
+                                    <span className="block text-xs text-slate-500 dark:text-slate-400">
                                         {contactContent.labels.email}
                                     </span>
-                                    <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere] transition group-hover:text-blue-700">
+                                    <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere] transition group-hover:text-blue-700 dark:text-slate-200 dark:group-hover:text-blue-300">
                                         {contactContent.email}
                                     </span>
                                 </span>
                             </a>
 
                             <div className="flex items-start gap-3">
-                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-slate-800 dark:text-blue-400">
                                     <FaMapMarkerAlt aria-hidden="true" />
                                 </span>
                                 <span>
-                                    <span className="block text-xs text-slate-500">
+                                    <span className="block text-xs text-slate-500 dark:text-slate-400">
                                         {contactContent.labels.location}
                                     </span>
-                                    <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere]">
+                                    <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere] dark:text-slate-200">
                                         {contactContent.location}
                                     </span>
                                 </span>
                             </div>
 
                             <div className="flex items-start gap-3">
-                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-slate-800 dark:text-blue-400">
                                     <FaClock aria-hidden="true" />
                                 </span>
                                 <span>
-                                    <span className="block text-xs text-slate-500">
+                                    <span className="block text-xs text-slate-500 dark:text-slate-400">
                                         {contactContent.labels.responseTime}
                                     </span>
-                                    <span className="text-sm font-semibold text-slate-800">
+                                    <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">
                                         {contactContent.responseTime}
                                     </span>
                                 </span>
@@ -100,18 +100,18 @@ export const ContactPage = () => {
                     </div>
 
                     <div className="card-surface flex flex-col gap-4 p-6 sm:p-8">
-                        <h3 className="text-lg font-bold text-slate-900">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                             {contactContent.goodToKnow}
                         </h3>
                         {contactContent.faqs.map((faq) => (
                             <div
                                 key={faq.question}
-                                className="border-l-2 border-blue-100 pl-3 sm:pl-4"
+                                className="border-l-2 border-blue-100 pl-3 dark:border-slate-700 sm:pl-4"
                             >
-                                <p className="text-sm font-semibold text-slate-800">
+                                <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
                                     {faq.question}
                                 </p>
-                                <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                                <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                                     {faq.answer}
                                 </p>
                             </div>

@@ -16,7 +16,7 @@ const initialValues = {
 };
 
 const fieldClass =
-    'min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-800 placeholder:text-slate-400 transition focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:text-sm';
+    'min-h-12 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-800 placeholder:text-slate-400 transition focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-blue-500/20 sm:text-sm';
 
 const validate = (values) => {
     const errors = {};
@@ -67,14 +67,14 @@ export const ContactForm = () => {
                 role="status"
                 aria-live="polite"
             >
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-3xl text-emerald-600">
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-3xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
                     <FaCheckCircle aria-hidden="true" />
                 </span>
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-2xl font-bold text-slate-900">
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                         Message ready!
                     </h2>
-                    <p className="mx-auto max-w-sm text-sm leading-relaxed text-slate-600">
+                    <p className="mx-auto max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                         Thanks for reaching out, {values.name.split(' ')[0]}.
                         {` ${contactContent.responseTime}.`} Open your email app
                         to send it, or come back and write another one.
@@ -101,10 +101,10 @@ export const ContactForm = () => {
             className="card-surface flex flex-col gap-5 p-6 sm:p-8"
         >
             <div className="flex flex-col gap-1">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                     Send a message
                 </h2>
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-slate-500 dark:text-slate-400">
                     Fill in the details and I will get back to you soon.
                 </p>
             </div>
@@ -113,7 +113,7 @@ export const ContactForm = () => {
                 <div className="flex flex-col gap-2">
                     <label
                         htmlFor="name"
-                        className="text-sm font-medium text-slate-700"
+                        className="text-sm font-medium text-slate-700 dark:text-slate-300"
                     >
                         Your name
                     </label>
@@ -145,7 +145,7 @@ export const ContactForm = () => {
                 <div className="flex flex-col gap-2">
                     <label
                         htmlFor="email"
-                        className="text-sm font-medium text-slate-700"
+                        className="text-sm font-medium text-slate-700 dark:text-slate-300"
                     >
                         Email address
                     </label>
@@ -200,11 +200,11 @@ export const ContactForm = () => {
                 <div className="flex items-center justify-between gap-2">
                     <label
                         htmlFor="message"
-                        className="text-sm font-medium text-slate-700"
+                        className="text-sm font-medium text-slate-700 dark:text-slate-300"
                     >
                         Your message
                     </label>
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-slate-400 dark:text-slate-500">
                         {values.message.trim().length} characters
                     </span>
                 </div>

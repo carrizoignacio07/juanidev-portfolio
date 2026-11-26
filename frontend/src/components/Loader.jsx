@@ -1,7 +1,7 @@
 export const Loader = ({ label = 'Loading content…' }) => {
     return (
         <div
-            className="col-span-full flex w-full flex-col items-center justify-center gap-3 py-16 text-slate-500"
+            className="col-span-full flex w-full flex-col items-center justify-center gap-3 py-16 text-slate-500 dark:text-slate-400"
             role="status"
             aria-live="polite"
         >

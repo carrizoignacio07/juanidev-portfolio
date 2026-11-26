@@ -17,9 +17,9 @@ export const TechCard = ({ tech }) => {
     const FallbackIcon = Icon ?? FaCode;
 
     return (
-        <article className="group flex items-center gap-4 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 sm:p-5">
+        <article className="group flex items-center gap-4 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/60 dark:hover:shadow-blue-500/5 sm:p-5">
             <div
-                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50/70 text-xl transition duration-300 group-hover:scale-110 sm:h-14 sm:w-14 sm:text-2xl ${color}`}
+                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50/70 text-xl transition duration-300 group-hover:scale-110 dark:bg-slate-800 sm:h-14 sm:w-14 sm:text-2xl ${color}`}
             >
                 {icon && !imageFailed ? (
                     <img
@@ -34,12 +34,14 @@ export const TechCard = ({ tech }) => {
             </div>
 
             <div className="min-w-0">
-                <h3 className="font-semibold text-slate-900 [overflow-wrap:anywhere]">
+                <h3 className="font-semibold text-slate-900 [overflow-wrap:anywhere] dark:text-slate-100">
                     {name}
                 </h3>
-                <p className="text-xs font-medium text-blue-600">{category}</p>
+                <p className="text-xs font-medium text-blue-600 dark:text-blue-400">
+                    {category}
+                </p>
                 {(level || years) && (
-                    <p className="mt-1 text-xs text-slate-500">
+                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                         {[level, years].filter(Boolean).join(' · ')}
                     </p>
                 )}
