@@ -1,44 +1,8 @@
 import { Link } from 'react-router-dom';
-import {
-    FaEnvelope,
-    FaFacebook,
-    FaGithub,
-    FaInstagram,
-    FaLinkedin,
-    FaMapMarkerAlt,
-    FaTwitter,
-} from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
-import { contactContent } from '../../data/mockData';
+import { brand, contactContent, socials } from '../../data/siteContent.js';
 import { LinksRRSS } from '../ui/LinksRRSS';
-
-const socials = [
-    {
-        label: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/ignacio-carrizo/',
-        icon: FaLinkedin,
-    },
-    {
-        label: 'GitHub',
-        href: 'https://github.com/carrizoignacio07',
-        icon: FaGithub,
-    },
-    {
-        label: 'Facebook',
-        href: 'https://www.facebook.com/ignacio.carrizo.798',
-        icon: FaFacebook,
-    },
-    {
-        label: 'Twitter',
-        href: 'https://twitter.com/carrizoignacio2',
-        icon: FaTwitter,
-    },
-    {
-        label: 'Instagram',
-        href: 'https://www.instagram.com/carrizoignacio1/',
-        icon: FaInstagram,
-    },
-];
 
 const quickLinks = [
     { label: 'Home', to: '/' },
@@ -58,15 +22,17 @@ export const Footer = () => {
                 <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-3">
                         <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 text-sm font-bold text-white">
-                            JD
+                            {brand.initials}
                         </span>
                         <span className="text-lg font-bold text-white">
-                            Juani<span className="text-blue-400">Dev</span>
+                            {brand.name}
+                            <span className="text-blue-400">
+                                {brand.highlight}
+                            </span>
                         </span>
                     </div>
                     <p className="max-w-xs text-sm leading-relaxed text-slate-400">
-                        Full stack developer turning ideas into simple, fast and
-                        beautiful web experiences.
+                        {brand.tagline}
                     </p>
                     <div className="flex flex-wrap items-center gap-2 pt-1">
                         {socials.map(({ label, href, icon: Icon }) => (
@@ -119,8 +85,8 @@ export const Footer = () => {
             </div>
 
             <div className="relative border-t border-white/10 px-5 py-5 text-center text-xs text-slate-500 sm:px-8">
-                © {new Date().getFullYear()} JuaniDev. Built with React, Vite
-                and Tailwind CSS.
+                © {new Date().getFullYear()} {brand.name}
+                {brand.highlight}. Built with React, Vite and Tailwind CSS.
             </div>
         </footer>
     );
