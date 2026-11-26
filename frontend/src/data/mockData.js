@@ -326,6 +326,21 @@ export const mockThanks = [
                 title: 'React from scratch',
                 url: 'https://www.youtube.com/@midudev',
             },
+            {
+                id: 2,
+                title: 'Modern JavaScript',
+                url: 'https://www.youtube.com/@midudev',
+            },
+            {
+                id: 3,
+                title: 'Node.js and Express',
+                url: 'https://www.youtube.com/@midudev',
+            },
+            {
+                id: 4,
+                title: 'Git and GitHub for developers',
+                url: 'https://www.youtube.com/@midudev',
+            },
         ],
     },
     {
@@ -338,8 +353,23 @@ export const mockThanks = [
         about_url: 'https://www.youtube.com/@fernando.herrera.archive',
         courses: [
             {
-                id: 2,
+                id: 5,
                 title: 'Node.js fundamentals',
+                url: 'https://www.youtube.com/@fernando.herrera.archive',
+            },
+            {
+                id: 6,
+                title: 'Express and REST APIs',
+                url: 'https://www.youtube.com/@fernando.herrera.archive',
+            },
+            {
+                id: 7,
+                title: 'TypeScript for backend',
+                url: 'https://www.youtube.com/@fernando.herrera.archive',
+            },
+            {
+                id: 8,
+                title: 'PostgreSQL with Sequelize',
                 url: 'https://www.youtube.com/@fernando.herrera.archive',
             },
         ],
@@ -354,8 +384,23 @@ export const mockThanks = [
         about_url: 'https://www.youtube.com/@JuanDavidNaranjo',
         courses: [
             {
-                id: 3,
+                id: 9,
                 title: 'Clean architecture',
+                url: 'https://www.youtube.com/@JuanDavidNaranjo',
+            },
+            {
+                id: 10,
+                title: 'Domain-driven design',
+                url: 'https://www.youtube.com/@JuanDavidNaranjo',
+            },
+            {
+                id: 11,
+                title: 'Design patterns in practice',
+                url: 'https://www.youtube.com/@JuanDavidNaranjo',
+            },
+            {
+                id: 12,
+                title: 'Refactoring legacy code',
                 url: 'https://www.youtube.com/@JuanDavidNaranjo',
             },
         ],
@@ -370,9 +415,24 @@ export const mockThanks = [
         about_url: 'https://www.theodinproject.com',
         courses: [
             {
-                id: 4,
+                id: 13,
+                title: 'Foundations',
+                url: 'https://www.theodinproject.com/paths/foundations',
+            },
+            {
+                id: 14,
                 title: 'Full Stack JavaScript',
-                url: 'https://www.theodinproject.com',
+                url: 'https://www.theodinproject.com/paths/full-stack-javascript',
+            },
+            {
+                id: 15,
+                title: 'React',
+                url: 'https://www.theodinproject.com/paths/full-stack-javascript/courses/react',
+            },
+            {
+                id: 16,
+                title: 'Node.js',
+                url: 'https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs',
             },
         ],
     },
@@ -384,7 +444,23 @@ export const mockThanks = [
         avatar: 'from-slate-700 via-blue-600 to-cyan-500',
         github_url: 'https://github.com/CSS-Tricks',
         about_url: 'https://css-tricks.com',
-        courses: [],
+        courses: [
+            {
+                id: 17,
+                title: 'A Complete Guide to Flexbox',
+                url: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/',
+            },
+            {
+                id: 18,
+                title: 'A Complete Guide to Grid',
+                url: 'https://css-tricks.com/snippets/css/complete-guide-grid/',
+            },
+            {
+                id: 19,
+                title: 'A Complete Guide to Custom Properties',
+                url: 'https://css-tricks.com/a-complete-guide-to-custom-properties/',
+            },
+        ],
     },
 ];
 
@@ -487,6 +563,17 @@ export const contactContent = {
 
 const sameId = (a, b) => String(a ?? '') === String(b ?? '');
 
+const normalizeCourses = (courses) =>
+    Array.isArray(courses)
+        ? [
+              ...new Map(
+                  courses
+                      .filter((course) => course?.title && course?.url)
+                      .map((course) => [course.id ?? course.title, course])
+              ).values(),
+          ]
+        : [];
+
 export const withProjectVisuals = (project = {}) => {
     const mock = mockProjects.find(
         (item) => sameId(item.id, project.id) || item.title === project.title
@@ -543,5 +630,5 @@ export const withThanksVisuals = (thank = {}) => ({
     ...thank,
     avatar: thank.avatar || 'from-blue-500 to-cyan-400',
     img: thank.img ?? null,
-    courses: Array.isArray(thank.courses) ? thank.courses : [],
+    courses: normalizeCourses(thank.courses),
 });

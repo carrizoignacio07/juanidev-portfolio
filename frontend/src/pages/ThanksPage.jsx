@@ -19,15 +19,16 @@ export const ThanksPage = () => {
     );
 
     const courses = useMemo(
-        () => [
-            ...new Map(
-                thanks
-                    .flatMap((item) =>
-                        Array.isArray(item.courses) ? item.courses : []
-                    )
-                    .map((course) => [course.title, course])
-            ).values(),
-        ],
+        () =>
+            [
+                ...new Map(
+                    thanks
+                        .flatMap((item) =>
+                            Array.isArray(item.courses) ? item.courses : []
+                        )
+                        .map((course) => [course.title, course])
+                ).values(),
+            ].slice(0, 3),
         [thanks]
     );
 
