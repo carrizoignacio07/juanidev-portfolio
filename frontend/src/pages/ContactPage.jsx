@@ -8,15 +8,15 @@ import {
 import { ContactForm } from '../components/ContactForm.jsx';
 import { LinksRRSS } from '../components/ui/LinksRRSS.jsx';
 import { PageIntro } from '../components/ui/PageIntro.jsx';
-import { contactContent } from '../data/mockData';
+import { contactContent } from '../data/siteContent.js';
 
 export const ContactPage = () => {
     return (
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-5 py-10 sm:px-8 lg:gap-16 lg:px-12 lg:py-14">
             <PageIntro
-                eyebrow="Contact"
-                title="Let's start a conversation."
-                description="Have a project in mind, a question, or just want to say hi? Drop me a message and I will get back to you."
+                eyebrow={contactContent.intro.eyebrow}
+                title={contactContent.intro.title}
+                description={contactContent.intro.description}
                 breadcrumb={[{ label: 'Home', to: '/' }, { label: 'Contact' }]}
             />
 
@@ -29,11 +29,10 @@ export const ContactPage = () => {
                         </span>
                         <div className="flex flex-col gap-2">
                             <h2 className="text-2xl font-bold text-slate-900">
-                                I am easy to reach
+                                {contactContent.reach.title}
                             </h2>
                             <p className="text-sm leading-relaxed text-slate-600">
-                                Whether it is a project, a job offer or a quick
-                                question, my inbox is always open.
+                                {contactContent.reach.description}
                             </p>
                         </div>
 
@@ -47,7 +46,7 @@ export const ContactPage = () => {
                                 </span>
                                 <span>
                                     <span className="block text-xs text-slate-500">
-                                        Email
+                                        {contactContent.labels.email}
                                     </span>
                                     <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere] transition group-hover:text-blue-700">
                                         {contactContent.email}
@@ -61,7 +60,7 @@ export const ContactPage = () => {
                                 </span>
                                 <span>
                                     <span className="block text-xs text-slate-500">
-                                        Location
+                                        {contactContent.labels.location}
                                     </span>
                                     <span className="text-sm font-semibold text-slate-800 [overflow-wrap:anywhere]">
                                         {contactContent.location}
@@ -75,7 +74,7 @@ export const ContactPage = () => {
                                 </span>
                                 <span>
                                     <span className="block text-xs text-slate-500">
-                                        Response time
+                                        {contactContent.labels.responseTime}
                                     </span>
                                     <span className="text-sm font-semibold text-slate-800">
                                         {contactContent.responseTime}
@@ -102,7 +101,7 @@ export const ContactPage = () => {
 
                     <div className="card-surface flex flex-col gap-4 p-6 sm:p-8">
                         <h3 className="text-lg font-bold text-slate-900">
-                            Good to know
+                            {contactContent.goodToKnow}
                         </h3>
                         {contactContent.faqs.map((faq) => (
                             <div

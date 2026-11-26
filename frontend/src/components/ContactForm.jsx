@@ -6,7 +6,7 @@ import {
     FaRedo,
 } from 'react-icons/fa';
 
-import { contactContent } from '../data/mockData';
+import { contactContent } from '../data/siteContent.js';
 
 const initialValues = {
     name: '',

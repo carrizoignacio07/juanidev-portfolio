@@ -4,15 +4,14 @@ import { FaCode, FaMapMarkerAlt, FaRocket } from 'react-icons/fa';
 import { CallToAction } from '../components/ui/CallToAction';
 import { PageIntro } from '../components/ui/PageIntro';
 import { SectionHeading } from '../components/ui/SectionHeading';
-import { aboutContent } from '../data/mockData';
-import { stats } from '../data/homeMock.js';
+import { aboutContent, brand, stats } from '../data/siteContent.js';
 
 export const AboutPage = () => {
     return (
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:gap-14 sm:px-8 lg:gap-20 lg:px-12 lg:py-14">
             <PageIntro
-                eyebrow="About me"
-                title="A developer who builds with purpose."
+                eyebrow={aboutContent.intro.eyebrow}
+                title={aboutContent.intro.title}
                 description={aboutContent.lead}
                 breadcrumb={[{ label: 'Home', to: '/' }, { label: 'About' }]}
             />
@@ -20,8 +19,8 @@ export const AboutPage = () => {
             <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
                 <div className="flex flex-col gap-5">
                     <SectionHeading
-                        eyebrow="My story"
-                        title="A bit of context"
+                        eyebrow={aboutContent.story.eyebrow}
+                        title={aboutContent.story.title}
                     />
                     {aboutContent.paragraphs.map((paragraph) => (
                         <p
@@ -67,14 +66,14 @@ export const AboutPage = () => {
                         <div className="flex flex-col gap-5 p-5 sm:p-6">
                             <div className="flex items-center gap-4">
                                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400 text-xl font-bold text-white shadow-lg shadow-blue-500/25 sm:h-20 sm:w-20 sm:text-2xl">
-                                    JD
+                                    {brand.initials}
                                 </div>
                                 <div>
                                     <p className="text-base font-bold text-slate-900 [overflow-wrap:anywhere] sm:text-lg">
-                                        Ignacio Carrizo
+                                        {aboutContent.fullName}
                                     </p>
                                     <p className="text-sm font-medium text-blue-600">
-                                        Full Stack Developer
+                                        {brand.role}
                                     </p>
                                 </div>
                             </div>
@@ -89,14 +88,20 @@ export const AboutPage = () => {
                                     developer = {'{'}
                                     {'\n  '}name:{' '}
                                     <span className="text-emerald-300">
-                                        'Juani'
+                                        '{aboutContent.code.name}'
                                     </span>
                                     ,{'\n  '}focus:{' '}
                                     <span className="text-rose-300">
-                                        ['React', 'Node.js']
+                                        [
+                                        {aboutContent.code.focus
+                                            .map((item) => `'${item}'`)
+                                            .join(', ')}
+                                        ]
                                     </span>
                                     ,{'\n  '}coffee:{' '}
-                                    <span className="text-amber-300">true</span>
+                                    <span className="text-amber-300">
+                                        {String(aboutContent.code.coffee)}
+                                    </span>
                                     {'\n'}
                                     {'}'};
                                 </code>
@@ -106,7 +111,8 @@ export const AboutPage = () => {
                                 to="/contact"
                                 className="btn-secondary w-full"
                             >
-                                <FaRocket aria-hidden="true" /> Work with me
+                                <FaRocket aria-hidden="true" />{' '}
+                                {aboutContent.cta.label}
                             </Link>
                         </div>
                     </div>
@@ -136,9 +142,9 @@ export const AboutPage = () => {
 
             <section className="flex flex-col gap-8">
                 <SectionHeading
-                    eyebrow="Journey"
-                    title="How I got here"
-                    subtitle="A short timeline of the steps that shaped the way I work today."
+                    eyebrow={aboutContent.journey.eyebrow}
+                    title={aboutContent.journey.title}
+                    subtitle={aboutContent.journey.subtitle}
                 />
                 <ol className="relative flex flex-col gap-6 border-l-2 border-blue-100 pl-5 sm:pl-8">
                     {aboutContent.timeline.map((item) => (
@@ -164,8 +170,8 @@ export const AboutPage = () => {
 
             <section className="flex flex-col gap-8">
                 <SectionHeading
-                    eyebrow="What matters"
-                    title="The values behind the code"
+                    eyebrow={aboutContent.valuesHeading.eyebrow}
+                    title={aboutContent.valuesHeading.title}
                     centered
                 />
                 <div className="grid gap-6 md:grid-cols-3">
@@ -191,13 +197,13 @@ export const AboutPage = () => {
             </section>
 
             <CallToAction
-                title="Have something in mind?"
-                description="I am always happy to talk about new ideas, projects and collaborations."
-                primary={{ label: 'Work with me', to: '/contact' }}
+                title={aboutContent.cta.title}
+                description={aboutContent.cta.description}
+                primary={{ label: aboutContent.cta.label, to: '/contact' }}
             />
 
             <p className="flex items-center justify-center gap-2 text-center text-xs text-slate-400">
-                <FaCode aria-hidden="true" /> Clean code, clear intent.
+                <FaCode aria-hidden="true" /> {aboutContent.note}
             </p>
         </div>
     );

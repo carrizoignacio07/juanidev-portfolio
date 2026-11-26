@@ -3,16 +3,11 @@
 
 import {
     FaChartLine,
-    FaCode,
     FaComments,
     FaDatabase,
-    FaGraduationCap,
-    FaHeart,
     FaLaptopCode,
-    FaLightbulb,
     FaRocket,
     FaShoppingCart,
-    FaUsers,
 } from 'react-icons/fa';
 import {
     SiExpress,
@@ -463,103 +458,6 @@ export const mockThanks = [
         ],
     },
 ];
-
-export const aboutContent = {
-    lead: 'I am Ignacio Carrizo, a full stack developer from Córdoba, Argentina. I like turning vague ideas into products that feel simple, fast and a little bit delightful.',
-    paragraphs: [
-        'My path into development started with curiosity about how websites were built and quickly turned into a daily habit of learning, breaking things and building them again. Today I work across the stack, with special interest in the space where good design meets solid engineering.',
-        'I care about the details that often go unnoticed: a keyboard-friendly interaction, a clear error message, an interface that stays usable on a small screen. Those details are what turn a working project into a product people enjoy using.',
-        'When I am not coding you will probably find me exploring a new tool, reading about design systems or looking for a good coffee to keep the momentum going.',
-    ],
-    facts: [
-        { label: 'Based in', value: 'Córdoba, Argentina' },
-        { label: 'Working mode', value: 'Remote & freelance' },
-        { label: 'Focus', value: 'React + Node.js' },
-        { label: 'Learning', value: 'Always something new' },
-    ],
-    timeline: [
-        {
-            year: '2023 — Now',
-            role: 'Full Stack Developer',
-            place: 'Freelance · Remote',
-            description:
-                'Building web applications for clients and personal projects, from the first wireframe to deployment and maintenance.',
-        },
-        {
-            year: '2022 — 2023',
-            role: 'Frontend Development',
-            place: 'Self-directed learning',
-            description:
-                'Deep dive into React, modern CSS and accessibility through hands-on projects and open courses.',
-        },
-        {
-            year: '2021 — 2022',
-            role: 'First steps in code',
-            place: 'The Odin Project',
-            description:
-                'Learned the fundamentals of HTML, CSS, JavaScript and Git while shipping small experiments.',
-        },
-    ],
-    values: [
-        {
-            icon: FaCode,
-            title: 'Craft over shortcuts',
-            description:
-                'Readable code and thoughtful structure are an investment in every future change.',
-        },
-        {
-            icon: FaUsers,
-            title: 'Build for people',
-            description:
-                'Interfaces should be clear, accessible and kind to everyone who uses them.',
-        },
-        {
-            icon: FaLightbulb,
-            title: 'Curiosity first',
-            description:
-                'The best work comes from asking better questions and enjoying the process.',
-        },
-    ],
-};
-
-export const contactContent = {
-    email: 'hello@juani.dev',
-    location: 'Córdoba, Argentina · Remote',
-    availability: 'Open to freelance work and new opportunities',
-    responseTime: 'I usually reply within 24 hours',
-    socials: [
-        {
-            label: 'LinkedIn',
-            href: 'https://www.linkedin.com/in/ignacio-carrizo/',
-            icon: FaUsers,
-        },
-        {
-            label: 'GitHub',
-            href: 'https://github.com/carrizoignacio07',
-            icon: SiGithub,
-        },
-        {
-            label: 'Instagram',
-            href: 'https://www.instagram.com/carrizoignacio1/',
-            icon: FaHeart,
-        },
-        {
-            label: 'YouTube',
-            href: 'https://www.youtube.com',
-            icon: FaRocket,
-        },
-    ],
-    faqs: [
-        {
-            question: 'What kind of work do you take on?',
-            answer: 'Frontend and full stack web projects, from a landing page to a complete application.',
-        },
-        {
-            question: 'Can we work remotely?',
-            answer: 'Yes. I am based in Córdoba and used to collaborating with teams across time zones.',
-        },
-    ],
-};
 
 const sameId = (a, b) => String(a ?? '') === String(b ?? '');
 

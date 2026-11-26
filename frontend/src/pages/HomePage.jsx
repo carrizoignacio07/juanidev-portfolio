@@ -13,13 +13,15 @@ import {
 import { SiReact, SiTailwindcss } from 'react-icons/si';
 
 import {
+    brand,
     contactEmail,
     featuredProjects,
     heroContent,
+    homeCopy,
     services,
     stats,
     techStack,
-} from '../data/homeMock.js';
+} from '../data/siteContent.js';
 
 const SectionHeading = ({ eyebrow, title, subtitle, centered = false }) => {
     return (
@@ -131,39 +133,41 @@ const Hero = () => {
                                 developer = {'{'}
                                 {'\n  '}name:{' '}
                                 <span className="text-emerald-300">
-                                    'Juani'
+                                    '{heroContent.code.name}'
                                 </span>
                                 ,{'\n  '}role:{' '}
                                 <span className="text-rose-300">
-                                    'Full Stack Dev'
+                                    '{heroContent.code.role}'
                                 </span>
                                 ,{'\n  '}stack: [
                                 <span className="text-emerald-300">
-                                    'React'
+                                    {heroContent.code.stack
+                                        .map((item) => `'${item}'`)
+                                        .join(', ')}
                                 </span>
-                                ,{' '}
-                                <span className="text-emerald-300">'Node'</span>
                                 ],
                                 {'\n  '}available:{' '}
-                                <span className="text-amber-300">true</span>
+                                <span className="text-amber-300">
+                                    {String(heroContent.code.available)}
+                                </span>
                                 {'\n'}
                                 {'}'};{'\n\n'}
                                 <span className="text-slate-500">
-                                    // let's build something 🚀
+                                    // {heroContent.code.comment}
                                 </span>
                             </code>
                         </pre>
 
                         <div className="mt-4 flex items-center gap-3 rounded-2xl bg-blue-50 p-3">
                             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 text-lg font-bold text-white">
-                                JD
+                                {brand.initials}
                             </div>
                             <div>
                                 <p className="text-sm font-semibold text-slate-800">
-                                    Juani Dev
+                                    {brand.name} {brand.highlight}
                                 </p>
                                 <p className="text-xs text-slate-500">
-                                    Full Stack Developer · Remote
+                                    {brand.role} · Remote
                                 </p>
                             </div>
                         </div>
@@ -252,9 +256,9 @@ const Services = () => {
     return (
         <section className="flex w-full flex-col gap-8">
             <SectionHeading
-                eyebrow="What I do"
-                title="Turning ideas into reliable products"
-                subtitle="A little bit of design, a lot of engineering, and a genuine interest in making things work well for people."
+                eyebrow={homeCopy.services.eyebrow}
+                title={homeCopy.services.title}
+                subtitle={homeCopy.services.subtitle}
             />
             <div className="grid gap-6 md:grid-cols-3">
                 {services.map((service) => (
@@ -330,9 +334,9 @@ const Projects = () => {
     return (
         <section className="flex w-full flex-col gap-8">
             <SectionHeading
-                eyebrow="Featured work"
-                title="A few things I've built"
-                subtitle="Some recent projects that show how I think about structure, performance and the small details."
+                eyebrow={homeCopy.projects.eyebrow}
+                title={homeCopy.projects.title}
+                subtitle={homeCopy.projects.subtitle}
             />
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {featuredProjects.map((project) => (
@@ -344,7 +348,8 @@ const Projects = () => {
                     to="/projects"
                     className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-400 hover:bg-blue-50"
                 >
-                    See all projects <FaArrowRight aria-hidden="true" />
+                    {homeCopy.projects.seeAll}{' '}
+                    <FaArrowRight aria-hidden="true" />
                 </Link>
             </div>
         </section>
@@ -355,9 +360,9 @@ const TechStack = () => {
     return (
         <section className="flex w-full flex-col gap-8 rounded-3xl border border-blue-100 bg-white/70 p-5 sm:p-10">
             <SectionHeading
-                eyebrow="Toolbox"
-                title="Technologies I work with"
-                subtitle="The tools I reach for most often, depending on what the project needs."
+                eyebrow={homeCopy.tech.eyebrow}
+                title={homeCopy.tech.title}
+                subtitle={homeCopy.tech.subtitle}
                 centered
             />
             <ul className="flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -388,24 +393,22 @@ const CallToAction = () => {
                     aria-hidden="true"
                 />
                 <h2 className="text-3xl font-bold sm:text-4xl">
-                    Let's build something together
+                    {homeCopy.cta.title}
                 </h2>
-                <p className="text-blue-50">
-                    Have a project in mind or just want to say hi? My inbox is
-                    always open.
-                </p>
+                <p className="text-blue-50">{homeCopy.cta.description}</p>
                 <div className="flex flex-wrap justify-center gap-4">
                     <Link
                         to="/contact"
                         className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
                     >
-                        Start a conversation
+                        {homeCopy.cta.primary}
                     </Link>
                     <a
                         href={`mailto:${contactEmail}`}
                         className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                     >
-                        <FaEnvelope aria-hidden="true" /> Say hello
+                        <FaEnvelope aria-hidden="true" />{' '}
+                        {homeCopy.cta.secondary}
                     </a>
                 </div>
             </div>
